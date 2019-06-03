@@ -1,0 +1,22 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/quantisnet_bg.qm</file>
+        <file alias="de">locale/quantisnet_de.qm</file>
+        <file alias="en">locale/quantisnet_en.qm</file>
+        <file alias="es">locale/quantisnet_es.qm</file>
+        <file alias="fi">locale/quantisnet_fi.qm</file>
+        <file alias="fr">locale/quantisnet_fr.qm</file>
+        <file alias="it">locale/quantisnet_it.qm</file>
+        <file alias="ja">locale/quantisnet_ja.qm</file>
+        <file alias="nl">locale/quantisnet_nl.qm</file>
+        <file alias="pl">locale/quantisnet_pl.qm</file>
+        <file alias="pt_BR">locale/quantisnet_pt_BR.qm</file>
+        <file alias="pt">locale/quantisnet_pt.qm</file>
+        <file alias="ru">locale/quantisnet_ru.qm</file>
+        <file alias="sk">locale/quantisnet_sk.qm</file>
+        <file alias="sv">locale/quantisnet_sv.qm</file>
+        <file alias="vi">locale/quantisnet_vi.qm</file>
+        <file alias="zh_CN">locale/quantisnet_zh_CN.qm</file>
+        <file alias="zh_TW">locale/quantisnet_zh_TW.qm</file>
+    </qresource>
+</RCC>

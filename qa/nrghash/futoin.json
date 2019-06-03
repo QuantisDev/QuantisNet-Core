@@ -1,0 +1,15 @@
+{
+  "name": "nrghash",
+  "version": "1.0",
+  "actions": {
+    "build": [
+      "mkdir -p include",
+      "cp -f ../../src/crypto/egihash.cpp ./",
+      "cp -f ../../src/crypto/egihash.h include/",
+      "cp -f ../../src/crypto/keccak-tiny.c include/",
+      "cp -f ../../src/crypto/keccak-tiny.h include/",
+      "cp -f ../../src/crypto/secure_memzero.h include/",
+      "@default"
+    ]
+  }
+}

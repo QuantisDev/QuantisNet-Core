@@ -1,0 +1,3 @@
+debian/manpages/quantisnetd.1
+debian/manpages/quantisnet.conf.5
+debian/manpages/quantisnet-cli.1

@@ -1,0 +1,6 @@
+usr/local/bin/quantisnet-qt usr/bin
+share/pixmaps/quantisnet32.xpm usr/share/pixmaps
+share/pixmaps/quantisnet16.xpm usr/share/pixmaps
+share/pixmaps/quantisnet128.png usr/share/pixmaps
+debian/quantisnet-qt.desktop usr/share/applications
+debian/quantisnet-qt.protocol usr/share/kde4/services/
