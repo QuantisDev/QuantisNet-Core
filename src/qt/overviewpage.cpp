@@ -227,7 +227,7 @@ void OverviewPage::updateWallet()
     QObject* button = QObject::sender();
     if (button == ui->buttonUpgrade)
     {
-      QUrl url("https://github.com/akshaynexus/QuantisNet-NewChain/releases");
+      QUrl url("https://github.com/QuantisDev/QuantisNet-Core/releases");
       QDesktopServices::openUrl(url);
     }
 }
