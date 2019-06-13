@@ -30,8 +30,8 @@ packages:
 - "python-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/quantisnetcryptocurrency/quantisnet.git"
-  "dir": "QuantisNet-NewChain"
+- "url": "https://github.com/QuantisDev/QuantisNet-Core-v2.1.2.git"
+  "dir": "QuantisNet-Core-v2.1.2"
 files:
 - "MacOSX10.11.sdk.tar.gz"
 script: |
@@ -83,7 +83,7 @@ script: |
   # Faketime for depends so intermediate results are comparable
   create_global_faketime_wrappers "2000-01-01 12:00:00"
   create_per-host_faketime_wrappers "2000-01-01 12:00:00"
-  cd QuantisNet-NewChain
+  cd QuantisNet-Core-v2.1.2
 
   BASEPREFIX=`pwd`/depends
 

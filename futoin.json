@@ -1,58 +1,53 @@
 {
-  "name": "quantisnet",
-  "version": "2.1.2",
-  "vcs": "git",
-  "tools": {
-    "make": "*",
-    "cmake": "*",
-    "python": "3"
-  },
-  "actions": {
-    "clean" : "cte git clean -ffdx -e depends/ -e .vagrant/ . || true",
-    "full-clean" : "cte git clean -ffdx -e .vagrant/ . || true",
-    "prepare": [
-      "require-host-env",
-      "cte cmake -E make_directory ${QUANTISNET_BUILD_DIR:-build/$(hostname -s)-release}",
-      "cte cmake -E create_symlink ${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} build/current",
-      "cte cmake -E chdir build/current sh -e $(pwd)/autogen.sh",
-      "cte cmake -E chdir build/current $(pwd)/configure --prefix=$(pwd)/build/${QUANTISNET_VER:-quantisnet} ${QUANTISNET_CONFIG_ALL}"
-    ],
-    "prepare-release": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} QUANTISNET_CONFIG_ALL='' cid prepare",
-    "prepare-debug": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-debug} QUANTISNET_CONFIG_ALL='--enable-debug' cid prepare",
-    "prepare-coverage": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-coverage} QUANTISNET_CONFIG_ALL='--enable-debug --enable-lcov' LIBS='-lgcov' cid prepare",
-    "build": [
-      "require-host-env",
-      "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} -j${MAKEJOBS:-$(nproc)}",
-      "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} install"
-    ],
-    "require-host-env": [
-      "if [ -z \"$HOST\" ]; then echo 'Please set HOST env (e.g. x86_64-linux-gnu)'; exit 1; fi"
-    ],
-    "check" : [
-        "check-cpp"
-    ],
-    "check-all": [
-      "check-cpp",
-      "check-rpc"
-    ],
-    "check-make": "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} check",
-    "check-cpp": [
-        "cte cmake -E make_directory ./test_results",
-        "./build/${QUANTISNET_VER:-quantisnet}/bin/test_quantisnet${EXE_EXT} --log_format=XML --log_level=warning --log_sink=./test_results/results.xml --report_format=XML --report_level=detailed --report_sink=./test_results/report.xml --result_code=no",
-        "./build/${QUANTISNET_VER:-quantisnet}/bin/test_quantisnet-qt${EXE_EXT} -xml -o ./test_results/test_quantisnet-qt.xml"
-    ],
-    "check-rpc": "cte python qa/pull-tester/rpc-tests.py",
-    "package" : "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} deploy",
-    "quantisnetd" : "build/current/src/quantisnetd",
-    "quantisnet-cli" : "build/current/src/quantisnet-cli",
-    "quantisnet-qt" : "build/current/src/qt/quantisnet-qt",
-    "gdbserver" : "gdbserver ${GDBSERVER_COMM:-127.0.0.1:2000}",
-    "gdbserver-quantisnetd" : "@cid run gdbserver build/current/src/quantisnetd",
-    "gdbserver-quantisnet-cli" : "@cid run gdbserver build/current/src/quantisnet-cli",
-    "gdbserver-quantisnet-qt" : "@cid run gdbserver build/current/src/qt/quantisnet-qt",
-    "gdbgui" : "gdbgui --host ${GDBGUI_HOST:-127.0.0.1} --port ${GDBGUI_PORT:-2000} --no-browser",
-    "gdbgui-quantisnetd" : "@cid run gdbgui build/current/src/quantisnetd",
-    "gdbgui-quantisnet-cli" : "@cid run gdbgui build/current/src/quantisnet-cli",
-    "gdbgui-quantisnet-qt" : "@cid run gdbgui build/current/src/qt/quantisnet-qt"
-  }
+    "name": "quantisnet",
+    "version": "2.1.2",
+    "vcs": "git",
+    "tools": {
+        "make": "*",
+        "cmake": "*",
+        "python": "2.7"
+    },
+    "actions": {
+        "clean": "cte git clean -ffdx -e depends/ -e .vagrant/ . || true",
+        "full-clean": "cte git clean -ffdx -e .vagrant/ . || true",
+        "prepare": [
+            "cte cmake -E make_directory ${QUANTISNET_BUILD_DIR:-build/$(hostname -s)-release}",
+            "cte cmake -E create_symlink ${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} build/current",
+            "cte cmake -E chdir build/current sh -e $(pwd)/autogen.sh",
+            "cte cmake -E chdir build/current $(pwd)/configure --prefix=$(pwd)/build/${QUANTISNET_VER:-quantisnet} ${QUANTISNET_CONFIG_ALL}"
+        ],
+        "prepare-release": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} QUANTISNET_CONFIG_ALL='' cid prepare",
+        "prepare-debug": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-debug} QUANTISNET_CONFIG_ALL='--enable-debug' cid prepare",
+        "prepare-coverage": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-coverage} QUANTISNET_CONFIG_ALL='--enable-debug --enable-lcov' LIBS='-lgcov' cid prepare",
+        "build": [
+            "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} -j5",
+            "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} install"
+        ],
+        "check": [
+            "check-cpp"
+        ],
+        "check-all": [
+            "check-cpp",
+            "check-rpc"
+        ],
+        "check-make": "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} check",
+        "check-cpp": [
+            "cte cmake -E make_directory ./test_results",
+            "./build/${QUANTISNET_VER:-quantisnet}/bin/test_quantisnet${EXE_EXT} --log_format=XML --log_level=warning --log_sink=./test_results/results.xml --report_format=XML --report_level=detailed --report_sink=./test_results/report.xml --result_code=no",
+            "./build/${QUANTISNET_VER:-quantisnet}/bin/test_quantisnet-qt${EXE_EXT} -xml -o ./test_results/test_quantisnet-qt.xml"
+        ],
+        "check-rpc": "cte python qa/pull-tester/rpc-tests.py",
+        "package": "cte make -C ${QUANTISNET_BUILD_DIR:-build/current} deploy",
+        "quantisnetd": "build/current/src/quantisnetd",
+        "quantisnet-cli": "build/current/src/quantisnet-cli",
+        "quantisnet-qt": "build/current/src/qt/quantisnet-qt",
+        "gdbserver": "gdbserver ${GDBSERVER_COMM:-127.0.0.1:2000}",
+        "gdbserver-quantisnetd": "@cid run gdbserver build/current/src/quantisnetd",
+        "gdbserver-quantisnet-cli": "@cid run gdbserver build/current/src/quantisnet-cli",
+        "gdbserver-quantisnet-qt": "@cid run gdbserver build/current/src/qt/quantisnet-qt",
+        "gdbgui": "gdbgui --host ${GDBGUI_HOST:-127.0.0.1} --port ${GDBGUI_PORT:-2000} --no-browser",
+        "gdbgui-quantisnetd": "@cid run gdbgui build/current/src/quantisnetd",
+        "gdbgui-quantisnet-cli": "@cid run gdbgui build/current/src/quantisnet-cli",
+        "gdbgui-quantisnet-qt": "@cid run gdbgui build/current/src/qt/quantisnet-qt"
+    }
 }

@@ -19,9 +19,9 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libquantisnetconsensus.pc
 endif
 
-BITCOIND_BIN=$(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)
-BITCOIN_QT_BIN=$(top_builddir)/src/qt/$(BITCOIN_GUI_NAME)$(EXEEXT)
-BITCOIN_CLI_BIN=$(top_builddir)/src/$(BITCOIN_CLI_NAME)$(EXEEXT)
+BITCOIND_BIN=$(top_builddir)/src/$(QUANTISNET_DAEMON_NAME)$(EXEEXT)
+BITCOIN_QT_BIN=$(top_builddir)/src/qt/$(QUANTISNET_GUI_NAME)$(EXEEXT)
+BITCOIN_CLI_BIN=$(top_builddir)/src/$(QUANTISNET_CLI_NAME)$(EXEEXT)
 
 if TARGET_DARWIN
 QUANTISNET_DEBUG_NAME=$(PACKAGE)-$(PACKAGE_VERSION)-macos-debug

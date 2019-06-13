@@ -8,7 +8,7 @@ QuantisNet Core version 1.3.2 is now available from:
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/quantisnetcryptocurrency/quantisnet/issues
+  https://github.com/QuantisDev/QuantisNet-Core-v2.1.2/issues
 
 
 How to Upgrade
