@@ -19,8 +19,8 @@ packages:
 - "binutils-gold"
 reference_datetime: "2017-01-01 00:00:00"
 remotes:
-- "url": "https://github.com/quantisnetcryptocurrency/quantisnet.git"
-  "dir": "QuantisNet-NewChain"
+- "url": "https://github.com/QuantisDev/QuantisNet-Core-v2.1.2.git"
+  "dir": "QuantisNet-Core-v2.1.2"
 files:
 - "raspberrypi-tools.tar.gz"
 script: |
@@ -69,7 +69,7 @@ script: |
   done
   export PATH=${WRAP_DIR}:${PATH}
 
-  cd QuantisNet-NewChain
+  cd QuantisNet-Core-v2.1.2
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do

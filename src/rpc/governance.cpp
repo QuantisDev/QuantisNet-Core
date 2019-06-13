@@ -994,11 +994,28 @@ UniValue getsuperblockbudget(const JSONRPCRequest& request)
     return strBudget;
 }
 
+UniValue reloadmnlist(const JSONRPCRequest& request)
+{
+    if (request.fHelp) {
+        throw std::runtime_error(
+            "reloadmnlist\n"
+            "Hot Reloads MN LIST"
+        );
+    }
+    std::string strErr;
+  if(!masternodeConfig.read(strErr)) {
+     throw JSONRPCError(RPC_INTERNAL_ERROR, "Error reading masternode configuration file: " + strErr);
+    }
+    else{
+        return "success";
+    }
+}
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafe argNames
   //  --------------------- ------------------------  -----------------------  ------ ----------
     /* QuantisNet features */
     { "quantisnet",             "getgovernanceinfo",      &getgovernanceinfo,      true,  {} },
+    { "quantisnet",             "reloadmnlist",      &reloadmnlist,      true,  {} },
     { "quantisnet",             "getsuperblockbudget",    &getsuperblockbudget,    true,  {"index"} },
     { "quantisnet",             "gobject",                &gobject,                true,  {} },
     { "quantisnet",             "voteraw",                &voteraw,                true,  {} },
