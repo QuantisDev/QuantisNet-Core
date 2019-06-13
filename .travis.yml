@@ -49,7 +49,7 @@ env:
 # # No wallet
 #     - HOST=x86_64-unknown-linux-gnu PACKAGES="python3" DEP_OPTS="NO_WALLET=1" RUN_TESTS=false GOAL="install" QUANTISNET_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
 # Cross-Mac
-    - HOST=x86_64-apple-darwin11 PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python3-dev" BITCOIN_CONFIG="--enable-gui --enable-reduce-exports" OSX_SDK=10.11 GOAL="deploy"
+    - HOST=x86_64-apple-darwin11 PACKAGES="cmake imagemagick libcap-dev librsvg2-bin libz-dev libbz2-dev libtiff-tools python3-dev" BITCOIN_CONFIG="--enable-gui --enable-reduce-exports" OSX_SDK=10.11 GOAL="deploy" RUN_TESTS=false 
 
 before_install:
     - travis_retry sudo add-apt-repository ppa:ubuntu-wine/ppa -y
@@ -76,7 +76,6 @@ script:
     - if [ -n "$USE_SHELL" ]; then export CONFIG_SHELL="$USE_SHELL"; fi
     - OUTDIR=$BASE_OUTDIR/$TRAVIS_PULL_REQUEST/$TRAVIS_JOB_NUMBER-$HOST
     - QUANTISNET_CONFIG_ALL="--cache-file=${TRAVIS_BUILD_DIR}/config.cache --disable-dependency-tracking --prefix=$TRAVIS_BUILD_DIR/depends/$HOST --bindir=$OUTDIR/bin --libdir=$OUTDIR/lib ${QUANTISNET_CONFIG}"
-    - depends/$HOST/native/bin/ccache --max-size=$CCACHE_SIZE
     - rm -rf build
     - cid prepare
     - cid build
