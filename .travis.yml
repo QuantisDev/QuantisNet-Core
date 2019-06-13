@@ -69,6 +69,10 @@ before_script:
     - if [ -n "$OSX_SDK" -a -f depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz ]; then tar -C depends/SDKs -xf depends/sdk-sources/MacOSX${OSX_SDK}.sdk.tar.gz; fi
     - pip install --user futoin-cid
     - make $MAKEJOBS -C depends HOST=$HOST $DEP_OPTS
+    - pip uninstall urllib3
+    - pip uninstall jsonschema
+    - pip install urllib3==1.24.1
+    - pip install jsonschema==2.6.0
 script:
     - export TRAVIS_COMMIT_LOG=`git log --format=fuller -1`
     - if [ -n "$USE_SHELL" ]; then export CONFIG_SHELL="$USE_SHELL"; fi
