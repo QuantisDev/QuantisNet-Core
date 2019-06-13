@@ -70,7 +70,7 @@ before_script:
     - pip install --user futoin-cid
     - make $MAKEJOBS -C depends HOST=$HOST $DEP_OPTS
     # - sudo pip uninstall -y urllib3
-    - pip install urllib3==1.24.1
+    # - pip install urllib3==1.24.1
 script:
     - export TRAVIS_COMMIT_LOG=`git log --format=fuller -1`
     - if [ -n "$USE_SHELL" ]; then export CONFIG_SHELL="$USE_SHELL"; fi
