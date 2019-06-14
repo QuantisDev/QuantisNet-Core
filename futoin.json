@@ -14,7 +14,7 @@
             "cte cmake -E make_directory ${QUANTISNET_BUILD_DIR:-build/$(hostname -s)-release}",
             "cte cmake -E create_symlink ${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} build/current",
             "cte cmake -E chdir build/current sh -e $(pwd)/autogen.sh",
-            "cte cmake -E chdir build/current $(pwd)/configure --prefix=$(pwd)/build/${QUANTISNET_VER:-quantisnet} ${QUANTISNET_CONFIG_ALL}"
+            "cte cmake -E chdir build/current $(pwd)/configure --enable-tests=no --prefix=$(pwd)/build/${QUANTISNET_VER:-quantisnet} ${QUANTISNET_CONFIG_ALL}"
         ],
         "prepare-release": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-release} QUANTISNET_CONFIG_ALL='' cid prepare",
         "prepare-debug": "QUANTISNET_BUILD_DIR=${QUANTISNET_BUILD_DIR:-$(pwd)/build/$(hostname -s)-debug} QUANTISNET_CONFIG_ALL='--enable-debug' cid prepare",
