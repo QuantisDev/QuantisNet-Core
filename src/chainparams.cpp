@@ -138,7 +138,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.This helps new and existing users not connect to a forked chain
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000086c17a618e2657e79");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0099fdea7d3b184ae7a4a10b114e384d76eeca520d95bdbe6cc1934c0bc6bf10");
