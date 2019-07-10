@@ -52,7 +52,7 @@ extern CSporkManager sporkManager;
 // Keep track of all of the network spork settings
 //
 
-template<typename SporkType, int MsgType, int MinProtocol=GetMinProtoVersion()>
+template<typename SporkType, int MsgType, int MinProtocol=MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT>
 class CSporkBase {
 protected:
     std::vector<unsigned char> vchSig;
