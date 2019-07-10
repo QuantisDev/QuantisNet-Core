@@ -30,7 +30,8 @@ std::map<int, int64_t> mapSporkDefaults = {
     {SPORK_12_RECONSIDER_BLOCKS,             0},             // 0 BLOCKS
     {SPORK_14_REQUIRE_SENTINEL_FLAG,         1545415606ULL}, // ON
     {SPORK_15_FIRST_POS_BLOCK,               315ULL},     // ON @mainnet
-    {SPORK_16_MASTERNODE_MIN_PROTOCOL,       MIN_PEER_PROTO_VERSION }, // Actual
+    {SPORK_16_MASTERNODE_MIN_PROTOCOL,       MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT }, // Actual
+    {SPORK_17_NEWPROTO_ENFORCE,                   1563195813ULL}, // July 15th
 };
 SporkCheckpointMap mapSporkCheckpoints GUARDED_BY(cs_main);
 SporkBlacklistMap mapSporkBlacklist GUARDED_BY(cs_main);
