@@ -1,7 +1,7 @@
 # QuantisNet (QUAN) Information
 ![QuantisNet](https://cdn.discordapp.com/attachments/436649409535541248/528345762795487240/321x81.png)
 
-| [**Whitepaper**](https://github.com/QuantisDev/QuantisNet-PIVX-Fork-NEW-BLOCKCHAIN/blob/master/Whitepaper.pdf.pdf) | [**Website**](https://quantisnetwork.org/) | [**Discord**](https://discord.gg/cFYF57h) | [**Telegram**](https://t.me/quantis) |
+| [**Whitepaper**](https://quantisnetwork.org/wp-content/uploads/2019/01/Quantis-WP.pdf) | [**Website**](https://quantisnetwork.org/) | [**Discord**](https://discord.gg/cFYF57h) | [**Telegram**](https://t.me/quantis) |
 # QuantisNet Core
 
 #### https://www.QuantisNetwork.org/
