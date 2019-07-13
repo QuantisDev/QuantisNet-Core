@@ -30,7 +30,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/QuantisDev/QuantisNet-Core-v2.1.2.git"
+- "url": "https://github.com/QuantisDev/QuantisNet-Core.git"
   "dir": "QuantisNet-Core-v2.1.2"
 files: []
 script: |

@@ -9,7 +9,7 @@ QuantisNet Core version 2.1.0 is now available from:
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/QuantisDev/QuantisNet-Core-v2.1.2/issues
+  https://github.com/QuantisDev/QuantisNet-Core/issues
 
 
 How to Upgrade

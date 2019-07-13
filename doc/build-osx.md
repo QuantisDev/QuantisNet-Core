@@ -37,7 +37,7 @@ Build Dash Core
 
 1. Clone the bitcoin source code and cd into `dash`
 
-        git clone https://github.com/QuantisDev/QuantisNet-Core-v2.1.2.git
+        git clone https://github.com/QuantisDev/QuantisNet-Core.git
         cd QuantisNet-Core-v2.1.2
 
 2.  Build QuantisNet Core:

@@ -626,7 +626,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/QuantisDev/QuantisNet-Core-v2.1.2";
+    const std::string URL_SOURCE_CODE = "<https://github.com/QuantisDev/QuantisNet-Core";
     const std::string URL_WEBSITE = "<https://www.quantisnetwork.org>";
 
     return CopyrightHolders(_("Copyright (C)"), 2017, COPYRIGHT_YEAR) + "\n" +
