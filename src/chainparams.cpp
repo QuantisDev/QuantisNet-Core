@@ -177,8 +177,8 @@ public:
         // QuantisNet BIP32 prvkeys start with 'nprv'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0xD7)(0xDC)(0x6E)(0x9F).convert_to_container<std::vector<unsigned char> >();
 
-        // QuantisNet BIP44/SLIP44 coin type is '715'
-        nExtCoinType = 367;
+        // QuantisNet BIP44/SLIP44 coin type is '9797'
+        nExtCoinType = 9797;
         // Legacy inherited from Dash
         nLegacyExtCoinType = 5;
 
