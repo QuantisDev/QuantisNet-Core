@@ -77,7 +77,7 @@ bool CMasternode::UpdateFromNewBroadcast(CMasternodeBroadcast& mnb, CConnman& co
     // if it matches our Masternode privkey...
     if(fMasternodeMode && pubKeyMasternode == activeMasternode.pubKeyMasternode) {
         nPoSeBanScore = -MASTERNODE_POSE_BAN_MAX_SCORE;
-        if(nProtocolVersion == PROTOCOL_VERSION) {
+        if(nProtocolVersion == PROTOCOL_VERSION || nProtocolVersion == GetMinProtoVersion()) {
             // ... and PROTOCOL_VERSION, then we've been remotely activated ...
             activeMasternode.ManageState(connman);
         } else {
