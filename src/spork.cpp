@@ -402,6 +402,7 @@ int CSporkManager::GetSporkIDByName(const std::string& strName)
     if (strName == "SPORK_14_REQUIRE_SENTINEL_FLAG")            return SPORK_14_REQUIRE_SENTINEL_FLAG;
     if (strName == "SPORK_15_FIRST_POS_BLOCK")                  return SPORK_15_FIRST_POS_BLOCK;
     if (strName == "SPORK_16_MASTERNODE_MIN_PROTOCOL")          return SPORK_16_MASTERNODE_MIN_PROTOCOL;
+    if (strName == "SPORK_17_NEWPROTO_ENFORCE")          return SPORK_17_NEWPROTO_ENFORCE;
 
     LogPrint("spork", "CSporkManager::GetSporkIDByName -- Unknown Spork name '%s'\n", strName);
     return -1;
@@ -421,6 +422,7 @@ std::string CSporkManager::GetSporkNameByID(int nSporkID)
         case SPORK_14_REQUIRE_SENTINEL_FLAG:            return "SPORK_14_REQUIRE_SENTINEL_FLAG";
         case SPORK_15_FIRST_POS_BLOCK:                  return "SPORK_15_FIRST_POS_BLOCK";
         case SPORK_16_MASTERNODE_MIN_PROTOCOL:          return "SPORK_16_MASTERNODE_MIN_PROTOCOL";
+        case SPORK_17_NEWPROTO_ENFORCE:          return "SPORK_17_NEWPROTO_ENFORCE";
         default:
             LogPrint("spork", "CSporkManager::GetSporkNameByID -- Unknown Spork ID %d\n", nSporkID);
             return "Unknown";
