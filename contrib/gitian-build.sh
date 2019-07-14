@@ -16,10 +16,10 @@ osx=true
 # Other Basic variables
 SIGNER=
 VERSION=
-commit=false
+commit=master
 url=https://github.com/QuantisDev/QuantisNet-Core
-proc=2
-mem=2000
+proc=60
+mem=432309
 lxc=true
 docker=false
 osslTarUrl=http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
@@ -277,7 +277,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./dashcore-binaries/${VERSION}
+	mkdir -p ./quantisnetcore-binaries/${VERSION}
 	
 	# Build Dependencies
 	echo ""
@@ -297,7 +297,7 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${url} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-linux.yml
 	    ./bin/gsign -p "$signProg" --signer "$SIGNER" --release ${VERSION}-linux --destination ../gitian.sigs/ ../QuantisNet-Core/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/dashcore-*.tar.gz build/out/src/dashcore-*.tar.gz ../dashcore-binaries/${VERSION}
+	    mv build/out/quantisnetcore-*.tar.gz build/out/src/quantisnetcore-*.tar.gz ../quantisnetcore-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -307,8 +307,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${url} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-win.yml
 	    ./bin/gsign -p "$signProg" --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../QuantisNet-Core/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/dashcore-*-win-unsigned.tar.gz inputs/dashcore-win-unsigned.tar.gz
-	    mv build/out/dashcore-*.zip build/out/dashcore-*.exe ../dashcore-binaries/${VERSION}
+	    mv build/out/quantisnetcore-*-win-unsigned.tar.gz inputs/quantisnetcore-win-unsigned.tar.gz
+	    mv build/out/quantisnetcore-*.zip build/out/quantisnetcore-*.exe ../quantisnetcore-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -318,8 +318,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${url} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-osx.yml
 	    ./bin/gsign -p "$signProg" --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../QuantisNet-Core/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/dashcore-*-osx-unsigned.tar.gz inputs/dashcore-osx-unsigned.tar.gz
-	    mv build/out/dashcore-*.tar.gz build/out/dashcore-*.dmg ../dashcore-binaries/${VERSION}
+	    mv build/out/quantisnetcore-*-osx-unsigned.tar.gz inputs/quantisnetcore-osx-unsigned.tar.gz
+	    mv build/out/quantisnetcore-*.tar.gz build/out/quantisnetcore-*.dmg ../quantisnetcore-binaries/${VERSION}
 	fi
 	popd
 
@@ -383,8 +383,8 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-win-signer.yml
 	    ./bin/gsign -p "$signProg" --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../QuantisNet-Core/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/dashcore-*win64-setup.exe ../dashcore-binaries/${VERSION}
-	    mv build/out/dashcore-*win32-setup.exe ../dashcore-binaries/${VERSION}
+	    mv build/out/quantisnetcore-*win64-setup.exe ../quantisnetcore-binaries/${VERSION}
+	    mv build/out/quantisnetcore-*win32-setup.exe ../quantisnetcore-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -394,7 +394,7 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    ./bin/gsign -p "$signProg" --signer "$SIGNER" --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../QuantisNet-Core/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/dashcore-osx-signed.dmg ../dashcore-binaries/${VERSION}/dashcore-${VERSION}-osx.dmg
+	    mv build/out/quantisnetcore-osx-signed.dmg ../quantisnetcore-binaries/${VERSION}/quantisnetcore-${VERSION}-osx.dmg
 	fi
 	popd
 
