@@ -194,7 +194,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        // See https://github.com/dashpay/dash/pull/1969
+        // See https://github.com/QuantisDev/QuantisNet-Core/pull/1969
         strSporkAddress = "Qgfqm9eXVCDwPFuTRsJ7qm6qb21zW23cST";
 
         nStakeMinAge = 5 * 60; //Set as 5 mins during testing,make it 24 hours when mainnet
@@ -323,7 +323,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        // See https://github.com/dashpay/dash/pull/1969
+        // See https://github.com/QuantisDev/QuantisNet-Core/pull/1969
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
@@ -449,7 +449,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        // See https://github.com/dashpay/dash/pull/1969
+        // See https://github.com/QuantisDev/QuantisNet-Core/pull/1969
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
@@ -570,7 +570,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        // See for instructions https://github.com/dashpay/dash/pull/1969
+        // See for instructions https://github.com/QuantisDev/QuantisNet-Core/pull/1969
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
         strSporkAddress = "yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW";
 
@@ -659,7 +659,7 @@ public:
 
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        // See https://github.com/dashpay/dash/pull/1969
+        // See https://github.com/QuantisDev/QuantisNet-Core/pull/1969
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         // privKey: cP6fF1kWCPWWWDjKpFzkCPJL6rUWVhErc2uBxBMivLv7fRRDcDBK
         strSporkAddress = "tCri6YknwQ4wnUQGxqDxSb6hdMaU7rPR3z";

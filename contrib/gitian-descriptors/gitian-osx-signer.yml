@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/dashpay/dash-detached-sigs.git"
+- "url": "https://github.com/QuantisDev/QuantisNet-Core-detached-sigs.git"
   "dir": "signature"
 files:
 - "quantisnetcore-osx-unsigned.tar.gz"
