@@ -51,10 +51,6 @@
 #include <iostream>
 #include <sstream>
 
-// Define local version integer (ex: v1.1.1 = 1110. OR v1.2.0 = 1200. OR v1.2.3.4 = 1234, ect)
-// IMPORTANT: Requires updating on each proto-bump!
-#define LOCAL_VERSION_INT 2120
-
 // Dump addresses to peers.dat and banlist.dat every 15 minutes (900s)
 #define DUMP_ADDRESSES_INTERVAL 900
 
@@ -96,7 +92,7 @@ bool fUpdateCheck = true;
 int shouldUpgrade = 0;
 
 // --------------------------------------------------
-// Upgrade Majority
+// JSKitty - DVM - Upgrade Majority
 // This is the magic number for deciding when enough
 // peers have a higher version to be considered the
 // 'majority' of the network for upgrading.
@@ -3197,45 +3193,32 @@ int CheckForUpdates (std::string addr, std::string ver)
 {
   if (fUpdateCheck == true)
   {
-    // Save full version for display purposes
-    const std::string verFull = ver;
-
-    // Splice raw version integer from the Sub Version
     replaceAll(ver, "/", "");
     replaceAll(ver, ".", "");
     replaceAll(ver, "QuantisNet Core:", "");
-    int verInt = toInt(ver);
-    int localVerInt = LOCAL_VERSION_INT;
-    std::string upgradeStatus = "upgrade status unknown";
+    int verInt = std::stoi(ver);
+
+    std::string localVer = FormatFullVersion();
+    replaceAll(localVer, "v", "");
+    replaceAll(localVer, ".", "");
+    int localVerInt = std::stoi(localVer);
 
     // Compare our version integer to the connected node
     if (verInt > localVerInt) {
-      upgradeStatus = "local client is outdated";
       higherVerPeers++;
     } else if (verInt == localVerInt) {
-      upgradeStatus = "local client is up to date";
       currentVerPeers++;
-    } else if (verInt < localVerInt) {
-      upgradeStatus = "peer is outdated";
-      lowerVerPeers++;
-    }
+    } else lowerVerPeers ++;
 
     // Calculate peers needed for a 'majority' upgrade
     int peersForUpgrade = (higherVerPeers + currentVerPeers + lowerVerPeers) / nUpgradeMajority;
 
-    // Ensure minimum is atleast 1 peer
-    if (peersForUpgrade < 1)
-        peersForUpgrade = 1;
+    // Ensure minimum is atleast 2 peers
+    if (peersForUpgrade < 2)
+        peersForUpgrade = 2;
 
     // Check if majority consensus is met
-    if (higherVerPeers >= peersForUpgrade) {
-      shouldUpgrade = 1;
-    } else {
-      shouldUpgrade = 0;
-    }
-
-    // Debug console prints for consensus tests
-    // std::cout << "Connected to: Node " << addr << ", " << upgradeStatus << ". Peers till upgrade: " << higherVerPeers << "/" << peersForUpgrade << endl;
+    if ((higherVerPeers >= peersForUpgrade) ? shouldUpgrade = true : shouldUpgrade = false)
 
     return shouldUpgrade;
   }
@@ -3243,18 +3226,10 @@ int CheckForUpdates (std::string addr, std::string ver)
 
 void replaceAll(std::string& str, const std::string& from, const std::string& to)
 {
-    if(from.empty())
-        return;
     size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != std::string::npos)
     {
         str.replace(start_pos, from.length(), to);
         start_pos += to.length();
     }
-}
-
-int toInt(const std::string str)
-{
-  int n = std::stoi(str);
-  return n;
 }
