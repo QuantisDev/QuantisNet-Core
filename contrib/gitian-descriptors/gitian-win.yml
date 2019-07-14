@@ -25,7 +25,7 @@ packages:
 - "python"
 remotes:
 - "url": "https://github.com/QuantisDev/QuantisNet-Core.git"
-  "dir": "QuantisNet-Core-v2.1.2"
+  "dir": "QuantisNet-Core"
 files: []
 script: |
   WRAP_DIR=$HOME/wrapped
@@ -102,7 +102,7 @@ script: |
   create_global_faketime_wrappers "2000-01-01 12:00:00"
   create_per-host_faketime_wrappers "2000-01-01 12:00:00"
   create_per-host_linker_wrapper "2000-01-01 12:00:00"
-  cd QuantisNet-Core-v2.1.2
+  cd QuantisNet-Core
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
