@@ -151,6 +151,107 @@ public:
     }
 };
 
+class CBlockHeaderCompat
+{
+public:
+    static constexpr uint32_t POS_BIT = 0x10000000UL;
+
+    // header for  hashing
+    int32_t nVersion;
+    uint256 hashPrevBlock;
+    uint256 hashMerkleRoot;
+    uint32_t nTime;
+    uint32_t nBits;
+    uint32_t nHeight;
+    uint64_t nNonce; // aka nStakeModifier
+
+    // Memory-only
+    mutable CPubKey posPubKey;
+
+    CBlockHeaderCompat()
+    {
+        SetNull();
+    }
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
+        READWRITE(this->nVersion);
+        READWRITE(hashPrevBlock);
+        READWRITE(hashMerkleRoot);
+        READWRITE(nTime);
+        READWRITE(nBits);
+        READWRITE(nNonce);
+    }
+
+    void SetNull()
+    {
+        nVersion = 0;
+        hashPrevBlock.SetNull();
+        hashMerkleRoot.SetNull();
+        nTime = 0;
+        nBits = 0;
+        nNonce = 0;
+    }
+
+    bool IsNull() const
+    {
+        return (nBits == 0);
+    }
+
+    /** GetPOWHash() returns the egihash used to satisfy the proof of work condition.
+    *       The first time this is computed, the hashMix is stored.
+    */
+    uint256 GetPOWHash();
+
+    /** GetPOWHash() returns the egihash used to satisfy the proof of work condition.
+    */
+    uint256 GetPOWHash() const;
+
+    uint256 GetHash() const;
+
+    // uint256 GetHashMix() const
+    // {
+    //     return hashMix;
+    // }
+
+    int64_t GetBlockTime() const
+    {
+        return (int64_t)nTime;
+    }
+
+    // uint256& hashProofOfStake() {
+    //     return hashMix;
+    // }
+    // const uint256& hashProofOfStake() const {
+    //     return hashMix;
+    // }
+    uint64_t& nStakeModifier() {
+        return nNonce;
+    }
+    const uint64_t& nStakeModifier() const {
+        return nNonce;
+    }
+
+    bool IsProofOfStake() const
+    {
+        return (nVersion & CBlockHeader::POS_BIT) != 0;
+    }
+
+    bool IsProofOfWork() const
+    {
+        return !IsProofOfStake();
+    }
+
+    bool SignBlock(const CKeyStore& keystore);
+    bool CheckBlockSignature(const CKeyID&) const;
+    const CPubKey& BlockPubKey() const;
+    // COutPoint StakeInput() const {
+    //     return COutPoint(posStakeHash, posStakeN);
+    // }
+};
+
 class CBlock : public CBlockHeader
 {
 public:

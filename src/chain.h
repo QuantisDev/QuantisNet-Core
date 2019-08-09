@@ -306,6 +306,19 @@ public:
         block.posBlockSig    = posBlockSig;
         return block;
     }
+    
+   CBlockHeaderCompat GetBlockHeaderCompatLayer() const
+    {
+        CBlockHeaderCompat block;
+        block.nVersion       = nVersion;
+        if (pprev)
+            block.hashPrevBlock = pprev->GetBlockHash();
+        block.hashMerkleRoot = hashMerkleRoot;
+        block.nTime          = nTime;
+        block.nBits          = nBits;
+        block.nNonce         = nNonce;
+        return block;
+    }
 
     uint256 GetBlockHash() const
     {
