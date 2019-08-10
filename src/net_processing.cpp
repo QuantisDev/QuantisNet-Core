@@ -2095,6 +2095,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.Tip();
         LogPrintf("getheaderscompat size " + vHeaders.size());
         connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::HEADERS, vHeaders));
+        LogPrintf("compact headers pushed :" + vHeaders.ToString());
     }
 
     else if (strCommand == NetMsgType::TX || strCommand == NetMsgType::DSTX || strCommand == NetMsgType::TXLOCKREQUEST)
