@@ -177,7 +177,9 @@ extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
 extern CTxMemPool mempool;
 typedef boost::unordered_map<uint256, CBlockIndex*, BlockHasher> BlockMap;
+typedef boost::unordered_map<uint256, CBlockIndexCompat*, BlockHasher> BlockMapCompat;
 extern BlockMap mapBlockIndex;
+extern BlockMapCompat mapBlockIndexCompat;
 extern uint64_t nLastBlockTx;
 extern uint64_t nLastBlockSize;
 extern const std::string strMessageMagic;
@@ -548,6 +550,9 @@ public:
 
 /** Find the last common block between the parameter chain and a locator. */
 CBlockIndex* FindForkInGlobalIndex(const CChain& chain, const CBlockLocator& locator);
+
+/** Find the last common block between the parameter chain and a locator. */
+CBlockIndexCompat* FindForkInGlobalIndexCompat(const CChain& chain, const CBlockLocator& locator);
 
 /** Mark a block as precious and reorganize. */
 bool PreciousBlock(CValidationState& state, const CChainParams& params, CBlockIndex *pindex);

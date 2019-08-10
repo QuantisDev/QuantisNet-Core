@@ -72,6 +72,7 @@
 CCriticalSection cs_main;
 
 BlockMap mapBlockIndex;
+BlockMapCompat mapBlockIndexCompat;
 CChain chainActive;
 CBlockIndex *pindexBestHeader = NULL;
 CWaitableCriticalSection csBestBlock;
@@ -232,6 +233,21 @@ CBlockIndex* FindForkInGlobalIndex(const CChain& chain, const CBlockLocator& loc
         if (mi != mapBlockIndex.end())
         {
             CBlockIndex* pindex = (*mi).second;
+            if (chain.Contains(pindex))
+                return pindex;
+        }
+    }
+    return chain.Genesis();
+}
+
+CBlockIndexCompat* FindForkInGlobalIndexCompat(const CChain& chain, const CBlockLocator& locator)
+{
+    // Find the first block the caller has in the main chain
+    BOOST_FOREACH(const uint256& hash, locator.vHave) {
+        BlockMap::iterator mi = mapBlockIndexCompat.find(hash);
+        if (mi != mapBlockIndexCompat.end())
+        {
+            CBlockIndexCompat* pindex = (*mi).second;
             if (chain.Contains(pindex))
                 return pindex;
         }

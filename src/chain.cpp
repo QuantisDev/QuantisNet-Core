@@ -20,6 +20,17 @@ void CChain::SetTip(CBlockIndex *pindex) {
         pindex = pindex->pprev;
     }
 }
+void CChain::SetTipCompat(CBlockIndexCompat *pindex) {
+    if (pindex == NULL) {
+        vChainCompat.clear();
+        return;
+    }
+    vChainCompat.resize(pindex->nHeight + 1);
+    while (pindex && vChainCompat[pindex->nHeight] != pindex) {
+        vChainCompat[pindex->nHeight] = pindex;
+        pindex = pindex->pprev;
+    }
+}
 
 CBlockLocator CChain::GetLocator(const CBlockIndex *pindex) const {
     int nStep = 1;

@@ -2053,28 +2053,28 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
 
         CNodeState *nodestate = State(pfrom->GetId());
-        const CBlockIndex* pindex = NULL;
+        const CBlockIndexCompat* pindex = NULL;
         if (locator.IsNull())
         {
             // If locator is null, return the hashStop block
-            BlockMap::iterator mi = mapBlockIndex.find(hashStop);
-            if (mi == mapBlockIndex.end())
+            BlockMapCompat::iterator mi = mapBlockIndexCompat.find(hashStop);
+            if (mi == mapBlockIndexCompat.end())
                 return true;
             pindex = (*mi).second;
         }
         else
         {
             // Find the last block the caller has in the main chain
-            pindex = FindForkInGlobalIndex(chainActive, locator);
+            pindex = FindForkInGlobalIndexCompat(chainActive, locator);
             if (pindex)
-                pindex = chainActive.Next(pindex);
+                pindex = chainActive.NextCompat(pindex);
         }
 
         // we must use CBlocks, as CBlockHeaders won't include the 0x00 nTx count at the end
         std::vector<CBlockCompat> vHeaders;
         int nLimit = MAX_HEADERS_RESULTS;
         LogPrint("net", "getheaderscompat %d to %s from peer=%d\n", (pindex ? pindex->nHeight : -1), hashStop.IsNull() ? "end" : hashStop.ToString(), pfrom->id);
-        for (; pindex; pindex = chainActive.Next(pindex))
+        for (; pindex; pindex = chainActive.NextCompat(pindex))
         {
             vHeaders.push_back(pindex->GetBlockHeaderCompatLayer());
             if (--nLimit <= 0 || pindex->GetBlockHash() == hashStop)
@@ -2093,7 +2093,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         // without the new block. By resetting the BestHeaderSent, we ensure we
         // will re-announce the new block via headers (or compact blocks again)
         // in the SendMessages logic.
-        nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.Tip();
+        nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.TipCompat();
      
         connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::HEADERS, vHeaders));
         LogPrint("net","compact headers pushed");
