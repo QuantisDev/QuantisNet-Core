@@ -549,9 +549,6 @@ void FindNextBlocksToDownload(CNode* pnode, unsigned int count, std::vector<cons
 
     if (state->pindexBestKnownBlock == NULL || state->pindexBestKnownBlock->nChainWork < chainActive.Tip()->nChainWork || state->pindexBestKnownBlock->nChainWork < UintToArith256(consensusParams.nMinimumChainWork)) {
         // This peer has nothing interesting.
-        //add this on debug ,to stop useless spam
-        if(fDebug)
-        LogPrintf("This peer has nothing interesting.");
         return;
     }
 
