@@ -144,7 +144,7 @@ if [ -n "$HOST" ]; then
     echo "Preparing dependencies"
     # # Ensure sysroot is clean of older versions which are unpacked from built folder
     rm -rf $srcdir/depends/$HOST
-    make -C $srcdir/depends HOST=$HOST -j${nproc}
+    make -C $srcdir/depends HOST=$HOST -j${MAKEJOBS:-$(nproc)}
 
     install_dir=$srcdir/build/${QUANTISNET_VER:-quantisnet}
     mkdir -p $install_dir
