@@ -2045,13 +2045,13 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
 
         LOCK(cs_main);
         if (IsInitialBlockDownload() && !pfrom->fWhitelisted) {
-            LogPrint("net", "Ignoring getheaders from peer=%d because node is in initial block download\n", pfrom->id);
+            LogPrint("net", "Ignoring getheaderscompat from peer=%d because node is in initial block download\n", pfrom->id);
             return true;
         }
 
         // Prevent PoS ban during recovery of local chainsplit
         if(!masternodeSync.IsSynced()) {
-            LogPrint("net", "Ignoring getheaders from peer=%d because node is not synced\n", pfrom->id);
+            LogPrint("net", "Ignoring getheaderscompat from peer=%d because node is not synced\n", pfrom->id);
             return true;
         }
 
@@ -2074,7 +2074,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         }
 
         // we must use CBlocks, as CBlockHeaders won't include the 0x00 nTx count at the end
-        std::vector<CBlock> vHeaders;
+        std::vector<CBlockCompat> vHeaders;
         int nLimit = MAX_HEADERS_RESULTS;
         LogPrint("net", "getheaderscompat %d to %s from peer=%d\n", (pindex ? pindex->nHeight : -1), hashStop.IsNull() ? "end" : hashStop.ToString(), pfrom->id);
         for (; pindex; pindex = chainActive.Next(pindex))

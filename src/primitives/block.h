@@ -211,22 +211,11 @@ public:
 
     uint256 GetHash() const;
 
-    // uint256 GetHashMix() const
-    // {
-    //     return hashMix;
-    // }
-
     int64_t GetBlockTime() const
     {
         return (int64_t)nTime;
     }
 
-    // uint256& hashProofOfStake() {
-    //     return hashMix;
-    // }
-    // const uint256& hashProofOfStake() const {
-    //     return hashMix;
-    // }
     uint64_t& nStakeModifier() {
         return nNonce;
     }
@@ -247,9 +236,7 @@ public:
     bool SignBlock(const CKeyStore& keystore);
     bool CheckBlockSignature(const CKeyID&) const;
     const CPubKey& BlockPubKey() const;
-    // COutPoint StakeInput() const {
-    //     return COutPoint(posStakeHash, posStakeN);
-    // }
+
 };
 
 class CBlock : public CBlockHeader
@@ -322,6 +309,75 @@ public:
     std::string ToString() const;
 };
 
+class CBlockCompat : public CBlockHeaderCompat
+{
+public:
+    static constexpr size_t COINBASE_INDEX = 0;
+    static constexpr size_t STAKE_INDEX = 1;
+
+    // network and disk
+    std::vector<CTransactionRef> vtx;
+
+    // memory only
+    mutable CTxOut txoutBackbone; // QuantisNet Backbone payment
+    mutable CTxOut txoutMasternode; // masternode payment
+    mutable std::vector<CTxOut> voutSuperblock; // superblock payment
+    mutable bool fChecked;
+
+    CBlockCompat()
+    {
+        SetNull();
+    }
+
+    CBlockCompat(const CBlockHeaderCompat &header)
+    {
+        SetNull();
+        *((CBlockHeaderCompat*)this) = header;
+    }
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
+        CBlockHeaderCompat::SerializationOp(s, ser_action);
+        READWRITE(vtx);
+    }
+
+    void SetNull()
+    {
+        CBlockHeaderCompat::SetNull();
+        vtx.clear();
+        txoutBackbone = CTxOut();
+        txoutMasternode = CTxOut();
+        voutSuperblock.clear();
+        fChecked = false;
+    }
+
+    CBlockHeaderCompat GetBlockHeader() const
+    {
+        return *this;
+    }
+
+    bool HasCoinBase() const;
+    bool HasStake() const;
+
+    const CTransactionRef& CoinBase() const {
+        return vtx[COINBASE_INDEX];
+    }
+    CTransactionRef& CoinBase() {
+        return vtx[COINBASE_INDEX];
+    }
+
+    const CTransactionRef& Stake() const {
+        return vtx[STAKE_INDEX];
+    }
+
+    CTransactionRef& Stake() {
+        return vtx[STAKE_INDEX];
+    }
+
+    std::string ToString() const;
+};
 
 /** Describes a place in the block chain to another node such that if the
  * other node doesn't have the same branch, it can find a recent common trunk.
