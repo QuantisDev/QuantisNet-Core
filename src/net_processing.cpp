@@ -2080,6 +2080,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             if (--nLimit <= 0 || pindex->GetBlockHash() == hashStop)
                 break;
         }
+        LogPrint("net","getheaderscompat size %i" , vHeaders.size());
         // pindex can be NULL either if we sent chainActive.Tip() OR
         // if our peer has chainActive.Tip() (and thus we are sending an empty
         // headers message). In both cases it's safe to update
@@ -2093,9 +2094,9 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         // will re-announce the new block via headers (or compact blocks again)
         // in the SendMessages logic.
         nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.Tip();
-        LogPrintf("getheaderscompat size " + vHeaders.size());
+     
         connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::HEADERS, vHeaders));
-        LogPrintf("compact headers pushed :" + vHeaders.ToString());
+        LogPrintf("net","compact headers pushed");
     }
 
     else if (strCommand == NetMsgType::TX || strCommand == NetMsgType::DSTX || strCommand == NetMsgType::TXLOCKREQUEST)
