@@ -20,7 +20,9 @@ cache:
     - depends/built
     - depends/sdk-sources
     - $HOME/.ccache
-
+stages:
+  - lint
+  - test
 env:
   global:
     - MAKEJOBS=5
@@ -34,7 +36,6 @@ env:
     - PYTHON_DEBUG=1
     - WINEDEBUG=fixme-all
     - PPA=ppa:bitcoin/bitcoin
-
   matrix:
 # # ARM
 #     - HOST=arm-linux-gnueabihf  PACKAGES="g++-arm-linux-gnueabihf" DEP_OPTS="NO_QT=1" CHECK_DOC=1 GOAL="install" QUANTISNET_CONFIG="--enable-glibc-back-compat --enable-reduce-exports"
@@ -71,6 +72,7 @@ before_script:
     - make -j$MAKEJOBS -C depends HOST=$HOST $DEP_OPTS
     # - sudo pip uninstall -y urllib3
     # - pip install urllib3==1.24.1
+    - bash test/lint-format-strings.sh
 script:
     - export TRAVIS_COMMIT_LOG=`git log --format=fuller -1`
     - if [ -n "$USE_SHELL" ]; then export CONFIG_SHELL="$USE_SHELL"; fi
@@ -86,3 +88,4 @@ after_script:
     - echo $TRAVIS_COMMIT_RANGE
     - echo $TRAVIS_COMMIT_LOG
     - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then (echo "Upload goes here. Something like: scp -r $BASE_OUTDIR server" || echo "upload failed"); fi
+    
