@@ -835,6 +835,19 @@ public:
                a.vChain[a.vChain.size() - 1] == b.vChain[b.vChain.size() - 1];
     }
 
+    /** Returns the index entry at a particular height in this chain, or NULL if no such height exists. */
+    CBlockIndexCompat *operator[](int nHeight) const {
+        if (nHeight < 0 || nHeight >= (int)vChain.size())
+            return NULL;
+        return vChain[nHeight];
+    }
+
+    /** Compare two chains efficiently. */
+    friend bool operator==(const CChain &a, const CChain &b) {
+        return a.vChainCompat.size() == b.vChainCompat.size() &&
+               a.vChainCompat[a.vChainCompat.size() - 1] == b.vChain[b.vChainCompat.size() - 1];
+    }
+
     /** Efficiently check whether a block is present in this chain. */
     bool Contains(const CBlockIndex *pindex) const {
         return (*this)[pindex->nHeight] == pindex;
