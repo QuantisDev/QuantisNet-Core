@@ -2094,8 +2094,8 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         // will re-announce the new block via headers (or compact blocks again)
         // in the SendMessages logic.
         nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.Tip();
-     for (auto i = vHeaders.begin(); i != vHeaders.end(); ++i){
-         LogPrint("net",i + ' ');
+     for(auto i = vHeaders.begin(); i != vHeaders.end(); ++i){
+         LogPrintf(i);
      }
 
         connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::HEADERS, vHeaders));
