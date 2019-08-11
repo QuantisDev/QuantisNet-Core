@@ -2095,7 +2095,7 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         // in the SendMessages logic.
         nodestate->pindexBestHeaderSent = pindex ? pindex : chainActive.Tip();
      for(auto i = vHeaders.begin(); i != vHeaders.end(); ++i){
-         LogPrintf(i);
+         LogPrintf(*i);
      }
 
         connman.PushMessage(pfrom, msgMaker.Make(NetMsgType::HEADERS, vHeaders));
