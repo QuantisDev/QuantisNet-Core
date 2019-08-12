@@ -123,7 +123,7 @@ else
 fi
 
 #---
-pip_install pyzmq
+# pip_install pyzmq
 # pip_install -U nrghash
 
 #---
