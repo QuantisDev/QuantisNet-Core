@@ -1747,7 +1747,7 @@
     <message>
         <location line="+7"/>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
-        <translation>Indien het uitgeven van onbevestigd wisselgeld uitgeschakeld wordt dan kan het wisselgeld van een transactie niet worden gebruikt totdat de transactie ten minste een bevestiging heeft. 
+        <translation>Indien het uitgeven van onbevestigd wisselgeld uitgeschakeld wordt dan kan het wisselgeld van een transactie niet worden gebruikt totdat de transactie ten minste een bevestiging heeft.
 Dit heeft ook invloed op de manier waarop uw saldo wordt berekend.</translation>
     </message>
     <message>
@@ -1805,7 +1805,7 @@ https://www.transifex.com/projects/p/quantisnet-cryptocurrency/</source>
     <message>
         <location line="+71"/>
         <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Deze instelling bepaalt het aantal individuele masternodes waardoor een input zal worden geanonimiseerd. 
+        <translation>Deze instelling bepaalt het aantal individuele masternodes waardoor een input zal worden geanonimiseerd.
 Meer anonimisatie rondes geeft een hoger niveau van privacy, maar kost ook meer aan vergoedingen.</translation>
     </message>
     <message>
@@ -2230,7 +2230,7 @@ Meer anonimisatie rondes geeft een hoger niveau van privacy, maar kost ook meer 
     <message>
         <location line="+41"/>
         <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>De denominaties zijn bij de Masternode ingebracht. 
+        <translation>De denominaties zijn bij de Masternode ingebracht.
 Om te mixen moeten andere gebruikers exact dezelfde denominaties inbrengen.</translation>
     </message>
     <message>
@@ -3265,7 +3265,7 @@ Om te mixen moeten andere gebruikers exact dezelfde denominaties inbrengen.</tra
         <location filename="../forms/receivecoinsdialog.ui" line="+34"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Gebruik een van de eerder gebruikte ontvangstadressen opnieuw.
-Het opnieuw gebruiken van adressen heeft beveiliging- en privacy problemen. 
+Het opnieuw gebruiken van adressen heeft beveiliging- en privacy problemen.
 Gebruik dit niet, behalve als er eerder een betalingsverzoek opnieuw gegenereerd is.</translation>
     </message>
     <message>
