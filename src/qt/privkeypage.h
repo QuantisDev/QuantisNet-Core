@@ -33,10 +33,9 @@ class PrivKeyPage : public QDialog
     Q_OBJECT
 
 public:
-
     explicit PrivKeyPage(QWidget* parent);
     ~PrivKeyPage();
-	QString  createmasternodekey();
+    QString createmasternodekey();
     const QString& getReturnValue() const { return returnValue; }
 
 public Q_SLOTS:
@@ -44,7 +43,7 @@ public Q_SLOTS:
 private:
     Ui::PrivKeyPage* ui;
     QMenu* contextMenu;
-	QString key;
+    QString key;
     QString returnValue;
 
 private Q_SLOTS:

@@ -11,6 +11,7 @@
 #include "privkeypage.h"
 #include "ui_privkeypage.h"
 
+#include "base58.h"
 #include "bitcoingui.h"
 #include "csvmodelwriter.h"
 #include "editaddressdialog.h"
@@ -18,13 +19,12 @@
 #include "masternode-payments.h"
 #include "masternodeconfig.h"
 #include "masternodeman.h"
-#include "base58.h"
 
 #include <QIcon>
 #include <QMenu>
-#include <QString>
 #include <QMessageBox>
 #include <QSortFilterProxyModel>
+#include <QString>
 
 PrivKeyPage::PrivKeyPage(QWidget* parent) : QDialog(parent),
                                             ui(new Ui::PrivKeyPage)
@@ -34,8 +34,8 @@ PrivKeyPage::PrivKeyPage(QWidget* parent) : QDialog(parent),
 #ifdef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
     ui->copyAddress->setIcon(QIcon());
 #endif
-	key = PrivKeyPage::createmasternodekey();
-	ui->payTo->setText(key);
+    key = PrivKeyPage::createmasternodekey();
+    ui->payTo->setText(key);
 
     // Context menu actions
     QAction* copyAddressAction = new QAction(tr("&Copy Address"), this);
@@ -52,7 +52,6 @@ PrivKeyPage::PrivKeyPage(QWidget* parent) : QDialog(parent),
 }
 
 
-
 PrivKeyPage::~PrivKeyPage()
 {
     delete ui;
@@ -61,8 +60,7 @@ PrivKeyPage::~PrivKeyPage()
 
 void PrivKeyPage::on_copyAddress_clicked()
 {
-     GUIUtil::setClipboard(ui->payTo->text());
-
+    GUIUtil::setClipboard(ui->payTo->text());
 }
 
 QString PrivKeyPage::createmasternodekey()
