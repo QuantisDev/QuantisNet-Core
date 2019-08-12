@@ -1326,10 +1326,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    #ifndef INT64_MAX
-#define INT64_MAX 0x7fffffffffffffffLL
-#endif
-     int nSubsidybase = 0;
+int nSubsidybase = 0;
 bool phase1 = nHeight > 1 && nHeight<=300;
 //POS Starts here
 bool phase2 = nHeight > 300 && nHeight<=2500;
@@ -1360,19 +1357,14 @@ bool phase12 = nHeight >1576801;
     else if (phase12)
      nSubsidybase = 1;
     else
-     nSubsidybase = 0.1;    
-
-
+     nSubsidybase = 0;    
 
      return nSubsidybase * COIN; 
 }
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockReward)
 {
-    CAmount ret = 0;
-bool phase1 = nHeight > 1 && nHeight<=300;
-//POS Starts here
-bool phase2 = nHeight > 300 && nHeight<=2500;
+CAmount ret = 0;
 bool phase3 = nHeight >2500 && nHeight<=12500;
 bool phase4 = nHeight >12500 && nHeight<=354000;
 bool phase5 = nHeight >354000 && nHeight<=525600;
@@ -1383,8 +1375,8 @@ bool phase9 = nHeight >1051200 && nHeight<=1226401;
 bool phase10 = nHeight >1226401 && nHeight<=1401601;
 bool phase11 = nHeight >1401601 && nHeight<=1576801;
 bool phase12 = nHeight >1576801;
-    const Consensus::Params& consensusParams = Params().GetConsensus();
-    if (nHeight >= consensusParams.nMasternodePaymentsStartBlock) {
+const Consensus::Params& consensusParams = Params().GetConsensus();
+if (nHeight >= consensusParams.nMasternodePaymentsStartBlock) {
         if(phase3){
             ret = blockReward * 0.85;
         }
@@ -2741,8 +2733,6 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
 {
 
     assert(pindexNew->pprev == chainActive.Tip());
-    auto const height = pindexNew->nHeight;
-
     // if there have been EPOCH_LENGTH number of blocks since the last DAG was generated,
     // generate a new one
 
