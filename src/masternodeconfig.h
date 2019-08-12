@@ -81,7 +81,9 @@ public:
 
     void clear();
     bool read(std::string& strErrRet);
+    void writeToMasternodeConf();
     void add(const std::string& alias, const std::string& ip, const std::string& privKey, const std::string& txHash, const std::string& outputIndex);
+    void deleteAlias(int count);
 
     std::vector<CMasternodeEntry>& getEntries() {
         return entries;
