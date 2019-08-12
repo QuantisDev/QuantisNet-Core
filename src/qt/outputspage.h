@@ -33,9 +33,10 @@ class OutPutsPage : public QDialog
     Q_OBJECT
 
 public:
+
     explicit OutPutsPage(QWidget* parent);
     ~OutPutsPage();
-    QString getmasternodeoutputs();
+	QString  getmasternodeoutputs();
     const QString& getReturnValue() const { return returnValue; }
 
 public Q_SLOTS:
@@ -43,7 +44,7 @@ public Q_SLOTS:
 private:
     Ui::OutPutsPage* ui;
     QMenu* contextMenu;
-    QString key;
+	QString key;
     QString returnValue;
 
 private Q_SLOTS:
