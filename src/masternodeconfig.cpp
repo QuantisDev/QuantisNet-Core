@@ -9,7 +9,6 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
-#include <boost/foreach.hpp>
 
 CMasternodeConfig masternodeConfig;
 
@@ -120,7 +119,7 @@ void CMasternodeConfig::writeToMasternodeConf()
 
 	std::string masternodeAliasBase = "";
 
-	BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+	for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries()) {
 		// Orders configs in proper strings
 		std::string masternodeAliasLine  = mne.getAlias() + " " + mne.getIp() + " " + mne.getPrivKey() + " " + mne.getTxHash() + " " + mne.getOutputIndex() + "\n";
 		masternodeAliasBase = masternodeAliasBase + masternodeAliasLine;

@@ -34,8 +34,8 @@ OutPutsPage::OutPutsPage(QWidget* parent) : QDialog(parent),
 {
     ui->setupUi(this);
 
-	key = OutPutsPage::getmasternodeoutputs();
-	ui->outPutsWidget->append(key);
+    key = OutPutsPage::getmasternodeoutputs();
+    ui->outPutsWidget->append(key);
 
     // Build context menu
     contextMenu = new QMenu();
@@ -56,11 +56,11 @@ QString OutPutsPage::getmasternodeoutputs ()
 {
     // Find possible candidates
     std::vector<COutput> possibleCoins;
-	pwalletMain->AvailableCoins(possibleCoins, true, NULL, false, ONLY_MN_COLLATERAL);
+    pwalletMain->AvailableCoins(possibleCoins, true, NULL, false, ONLY_MN_COLLATERAL);
 
-	std::string strPrint = "QuantisNet Masternode Outputs\n";
+    std::string strPrint = "QuantisNet Masternode Outputs\n";
 
-    BOOST_FOREACH (COutput& out, possibleCoins) {
+    for (COutput& out : possibleCoins) {
         strPrint += out.tx->GetHash().ToString() + " " + std::to_string(out.i) + "\n";
     }
 

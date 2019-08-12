@@ -129,7 +129,7 @@ void ConfigureMasternodePage::accept()
 
 void ConfigureMasternodePage::updateAlias(std::string Alias, std::string IP, std::string PrivKey, std::string TxHash, std::string OutputIndex, std::string mnAlias)
 {
-	BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+	for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries()) {
 		if(mnAlias == mne.getAlias()) {
 			int count = 0;
 			count = getCounters();
@@ -155,7 +155,7 @@ void ConfigureMasternodePage::on_AutoFillPrivKey_clicked()
     CKey secret;
     secret.MakeNewKey(false);
 
-	ui->privKeyEdit->setText(QString::fromStdString(CBitcoinSecret(secret).ToString()));
+    ui->privKeyEdit->setText(QString::fromStdString(CBitcoinSecret(secret).ToString()));
 }
 
 
@@ -163,13 +163,13 @@ void ConfigureMasternodePage::on_AutoFillOutputs_clicked()
 {
     // Find possible candidates
     std::vector<COutput> possibleCoins;
-	pwalletMain->AvailableCoins(possibleCoins, true, NULL, false, ONLY_MN_COLLATERAL);
+    pwalletMain->AvailableCoins(possibleCoins, true, NULL, false, ONLY_MN_COLLATERAL);
 
     int test = 0;
-    BOOST_FOREACH (COutput& out, possibleCoins) {
+    for (COutput& out : possibleCoins) {
         std::string TXHash = out.tx->GetHash().ToString();
         std::string OutputID = std::to_string(out.i);
-        BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries())
+        for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries())
             if(OutputID == mne.getOutputIndex() && TXHash == mne.getTxHash())
                 test = 1;
 

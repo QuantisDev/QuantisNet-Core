@@ -442,12 +442,12 @@ void MasternodeList::on_configureMasternodeButton_clicked()
     if ( QDialog::Accepted == dlg.exec() )
     {
 while (ui->tableWidgetMyMasternodes->rowCount() > 0)
-	{
-		ui->tableWidgetMyMasternodes->removeRow(0);
-	}		
+    {
+        ui->tableWidgetMyMasternodes->removeRow(0);
+    }
 
-	// clear cache
-	masternodeConfig.clear();
+    // clear cache
+    masternodeConfig.clear();
     // parse masternode.conf
     std::string strErr;
     if (!masternodeConfig.read(strErr)) {
@@ -497,7 +497,7 @@ void MasternodeList::deleteAlias()
     int nSelectedRow = index.row();
     std::string strAlias = ui->tableWidgetMyMasternodes->item(nSelectedRow, 0)->text().toStdString();
 	int count = 0;
-    BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
+    for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries()) {
 		count = count + 1;
 		if(strAlias == mne.getAlias()) {
 			std::vector<COutPoint> confLockedCoins;

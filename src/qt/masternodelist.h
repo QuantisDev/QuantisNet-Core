@@ -8,13 +8,12 @@
 #include "platformstyle.h"
 #include "sync.h"
 #include "util.h"
+#include "walletmodel.h"
 #include "wallet/wallet.h"
 
 #include <QMenu>
 #include <QTimer>
 #include <QWidget>
-
-#include "walletmodel.h"
 
 #include <QDialog>
 #include <QString>
@@ -89,7 +88,7 @@ private Q_SLOTS:
     void on_startAllButton_clicked();
     void on_startMissingButton_clicked();
     void on_configureMasternodeButton_clicked();
-	void openEditConfigureMasternodePage(QString strAlias, QString strIP, QString strPrivKey, QString strTxHash, QString strOutputIndex, int count);
+    void openEditConfigureMasternodePage(QString strAlias, QString strIP, QString strPrivKey, QString strTxHash, QString strOutputIndex, int count);
     void on_getMNPrivKeyButton_clicked();
 	void on_getOutputsButton_clicked();
     void on_tableWidgetMyMasternodes_itemSelectionChanged();
