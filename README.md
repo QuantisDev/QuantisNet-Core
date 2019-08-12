@@ -5,7 +5,7 @@
 # QuantisNet Core
 
 #### https://www.QuantisNetwork.org/
-
+[![CodeFactor](https://www.codefactor.io/repository/github/quantisdev/quantisnet-core/badge)](https://www.codefactor.io/repository/github/quantisdev/quantisnet-core)
 
 What is QuantisNet?
 ----------------
