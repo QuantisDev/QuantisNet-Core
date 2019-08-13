@@ -271,6 +271,18 @@ public:
         posBlockSig    = block.posBlockSig;
     }
 
+    explicit CBlockIndex(const CBlockHeaderCompat& block)
+    {
+        SetNull();
+
+        nVersion       = block.nVersion;
+        hashMerkleRoot = block.hashMerkleRoot;
+        nTime          = block.nTime;
+        nBits          = block.nBits;
+        nHeight        = block.nHeight;
+        nNonce         = block.nNonce;
+    }
+
     CDiskBlockPos GetBlockPos() const {
         CDiskBlockPos ret;
         if (nStatus & BLOCK_HAVE_DATA) {
