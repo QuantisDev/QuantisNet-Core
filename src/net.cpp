@@ -3193,34 +3193,40 @@ int CheckForUpdates (std::string addr, std::string ver)
 {
   if (fUpdateCheck == true)
   {
-    replaceAll(ver, "/", "");
-    replaceAll(ver, ".", "");
-    replaceAll(ver, "QuantisNet Core:", "");
-    int verInt = std::stoi(ver);
+    try {
+        replaceAll(ver, "/", "");
+        replaceAll(ver, ".", "");
+        replaceAll(ver, "QuantisNet Core:", "");
+        int verInt = std::stoi(ver);
 
-    std::string localVer = FormatFullVersion();
-    replaceAll(localVer, "v", "");
-    replaceAll(localVer, ".", "");
-    int localVerInt = std::stoi(localVer);
+        std::string localVer = FormatFullVersion();
+        replaceAll(localVer, "v", "");
+        replaceAll(localVer, ".", "");
+        int localVerInt = std::stoi(localVer);
 
-    // Compare our version integer to the connected node
-    if (verInt > localVerInt) {
-      higherVerPeers++;
-    } else if (verInt == localVerInt) {
-      currentVerPeers++;
-    } else lowerVerPeers ++;
+        // Compare our version integer to the connected node
+        if (verInt > localVerInt) {
+          higherVerPeers++;
+        } else if (verInt == localVerInt) {
+          currentVerPeers++;
+        } else lowerVerPeers ++;
 
-    // Calculate peers needed for a 'majority' upgrade
-    int peersForUpgrade = (higherVerPeers + currentVerPeers + lowerVerPeers) / nUpgradeMajority;
+        // Calculate peers needed for a 'majority' upgrade
+        int peersForUpgrade = (higherVerPeers + currentVerPeers + lowerVerPeers) / nUpgradeMajority;
 
-    // Ensure minimum is atleast 2 peers
-    if (peersForUpgrade < 2)
-        peersForUpgrade = 2;
+        // Ensure minimum is atleast 2 peers
+        if (peersForUpgrade < 2)
+            peersForUpgrade = 2;
 
-    // Check if majority consensus is met
-    if ((higherVerPeers >= peersForUpgrade) ? shouldUpgrade = true : shouldUpgrade = false)
+        // Check if majority consensus is met
+        if ((higherVerPeers >= peersForUpgrade) ? shouldUpgrade = true : shouldUpgrade = false)
 
-    return shouldUpgrade;
+        return shouldUpgrade;
+    } catch (const std::exception& e) {
+        // Ending up here likely means the node subver is different, e.g: A seeder, lightwallet or simply a tampered subver. Catch the parsing error and ignore the node.
+        LogPrintf("DVM: New node version couldn't be parsed, ignoring version %v of peer %d\n", ver, addr);
+        return false;
+    }
   }
 }
 
