@@ -30,6 +30,9 @@ QT_TS = \
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
+  qt/forms/privkeypage.ui \
+  qt/forms/outputspage.ui \
+  qt/forms/configuremasternodepage.ui \
   qt/forms/askpassphrasedialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/darksendconfig.ui \
@@ -52,6 +55,9 @@ QT_FORMS_UI = \
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
+  qt/moc_privkeypage.cpp \
+  qt/moc_outputspage.cpp \
+  qt/moc_configuremasternodepage.cpp \
   qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
@@ -122,6 +128,9 @@ PROTOBUF_PROTO = qt/paymentrequest.proto
 
 BITCOIN_QT_H = \
   qt/addressbookpage.h \
+  qt/privkeypage.h \
+  qt/outputspage.h \
+  qt/configuremasternodepage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
   qt/bantablemodel.h \
@@ -403,6 +412,9 @@ RES_ICONS = \
   qt/res/icons/trad/network_disabled.png
 
 BITCOIN_QT_BASE_CPP = \
+  qt/privkeypage.cpp \
+  qt/outputspage.cpp \
+  qt/configuremasternodepage.cpp \
   qt/bantablemodel.cpp \
   qt/bitcoinaddressvalidator.cpp \
   qt/bitcoinamountfield.cpp \
