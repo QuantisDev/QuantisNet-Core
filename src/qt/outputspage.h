@@ -33,7 +33,6 @@ class OutPutsPage : public QDialog
     Q_OBJECT
 
 public:
-
     explicit OutPutsPage(QWidget* parent);
     ~OutPutsPage();
 	QString  getmasternodeoutputs();

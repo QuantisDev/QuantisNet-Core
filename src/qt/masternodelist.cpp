@@ -99,8 +99,7 @@ MasternodeList::MasternodeList(const PlatformStyle *platformStyle, QWidget *pare
     updateNodeList();
 }
 
-MasternodeList::~MasternodeList()
-{
+MasternodeList::~MasternodeList() {
     delete ui;
 }
 
@@ -437,7 +436,6 @@ void MasternodeList::on_editConfigureMasternode_clicked()
 
 void MasternodeList::on_configureMasternodeButton_clicked()
 {
-
     ConfigureMasternodePage dlg(ConfigureMasternodePage::NewConfigureMasternode, this);
     if ( QDialog::Accepted == dlg.exec() )
     {
@@ -490,9 +488,7 @@ void MasternodeList::deleteAlias()
     // Find selected node alias
     QItemSelectionModel* selectionModel = ui->tableWidgetMyMasternodes->selectionModel();
     QModelIndexList selected = selectionModel->selectedRows();
-
     if (selected.count() == 0) return;
-
     QModelIndex index = selected.at(0);
     int nSelectedRow = index.row();
     std::string strAlias = ui->tableWidgetMyMasternodes->item(nSelectedRow, 0)->text().toStdString();
@@ -510,11 +506,10 @@ void MasternodeList::deleteAlias()
 			masternodeConfig.deleteAlias(count);
 			// write to masternode.conf
 			masternodeConfig.writeToMasternodeConf();
-while (ui->tableWidgetMyMasternodes->rowCount() > 0)
+    while (ui->tableWidgetMyMasternodes->rowCount() > 0)
 	{
-		ui->tableWidgetMyMasternodes->removeRow(0);
-	}		
-
+	 ui->tableWidgetMyMasternodes->removeRow(0);
+	}
 	// clear cache
 	masternodeConfig.clear();
     // parse masternode.conf
@@ -522,9 +517,8 @@ while (ui->tableWidgetMyMasternodes->rowCount() > 0)
     if (!masternodeConfig.read(strErr)) {
         LogPrintf("Error reading masternode configuration file: \n");
     }			
-			updateMyNodeList(true);
-			break;
-
+	updateMyNodeList(true);
+	break;
 		}
     }
 }
@@ -544,11 +538,9 @@ void MasternodeList::copyAlias()
     BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
 
 		if(strAlias == mne.getAlias()) {
-
 			std::string fullAliasCopy = mne.getAlias() + " " + mne.getIp() + " " + mne.getPrivKey() + " " + mne.getTxHash() + " " + mne.getOutputIndex();
 			GUIUtil::setClipboard(QString::fromStdString(fullAliasCopy));
 			break;
-
 		}
     }
 }
@@ -655,7 +647,6 @@ void MasternodeList::ShowQRCode(std::string strAlias) {
 
     if(!walletModel || !walletModel->getOptionsModel())
         return;
-
     // Get private key for this alias
     std::string strMNPrivKey = "";
     std::string strCollateral = "";
