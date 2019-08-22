@@ -440,7 +440,7 @@ void MasternodeList::on_configureMasternodeButton_clicked()
     ConfigureMasternodePage dlg(ConfigureMasternodePage::NewConfigureMasternode, this);
     if ( QDialog::Accepted == dlg.exec() )
     {
-while (ui->tableWidgetMyMasternodes->rowCount() > 0)
+    while (ui->tableWidgetMyMasternodes->rowCount() > 0)
     {
         ui->tableWidgetMyMasternodes->removeRow(0);
     }
@@ -506,7 +506,7 @@ void MasternodeList::deleteAlias()
 			masternodeConfig.deleteAlias(count);
 			// write to masternode.conf
 			masternodeConfig.writeToMasternodeConf();
-    while (ui->tableWidgetMyMasternodes->rowCount() > 0)
+while (ui->tableWidgetMyMasternodes->rowCount() > 0)
 	{
 	 ui->tableWidgetMyMasternodes->removeRow(0);
 	}
