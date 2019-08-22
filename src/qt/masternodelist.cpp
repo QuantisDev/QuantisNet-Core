@@ -99,7 +99,8 @@ MasternodeList::MasternodeList(const PlatformStyle *platformStyle, QWidget *pare
     updateNodeList();
 }
 
-MasternodeList::~MasternodeList() {
+MasternodeList::~MasternodeList()
+{
     delete ui;
 }
 
@@ -443,7 +444,6 @@ while (ui->tableWidgetMyMasternodes->rowCount() > 0)
     {
         ui->tableWidgetMyMasternodes->removeRow(0);
     }
-
     // clear cache
     masternodeConfig.clear();
     // parse masternode.conf
