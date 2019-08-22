@@ -33,7 +33,6 @@ class PrivKeyPage : public QDialog
     Q_OBJECT
 
 public:
-
     explicit PrivKeyPage(QWidget* parent);
     ~PrivKeyPage();
 	QString  createmasternodekey();
