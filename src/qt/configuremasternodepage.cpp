@@ -52,7 +52,6 @@ ConfigureMasternodePage::ConfigureMasternodePage(Mode mode, QWidget* parent) : Q
         setWindowTitle(tr("Edit Masternode Alias"));
         break;
     }
-
 }
 
 ConfigureMasternodePage::~ConfigureMasternodePage()
@@ -100,19 +99,16 @@ void ConfigureMasternodePage::loadOutputIndex(QString strOutputIndex)
 
 void ConfigureMasternodePage::saveCurrentRow()
 {
-
     switch (mode) {
     case NewConfigureMasternode:
 		if(ui->aliasEdit->text().toStdString().empty() || ui->vpsIpEdit->text().toStdString().empty() || ui->privKeyEdit->text().toStdString().empty() || ui->outputEdit->text().toStdString().empty() || ui->outputIdEdit->text().toStdString().empty())
 			break;
-
 		masternodeConfig.add(ui->aliasEdit->text().toStdString(), ui->vpsIpEdit->text().toStdString(), ui->privKeyEdit->text().toStdString(), ui->outputEdit->text().toStdString(), ui->outputIdEdit->text().toStdString());
 		masternodeConfig.writeToMasternodeConf();
         break;
     case EditConfigureMasternode:
 		if(ui->aliasEdit->text().toStdString().empty() || ui->vpsIpEdit->text().toStdString().empty() || ui->privKeyEdit->text().toStdString().empty() || ui->outputEdit->text().toStdString().empty() || ui->outputIdEdit->text().toStdString().empty())
 			break;
-
 	    QString MnAlias = getMnAliasCache();
 		ConfigureMasternodePage::updateAlias(ui->aliasEdit->text().toStdString(), ui->vpsIpEdit->text().toStdString(), ui->privKeyEdit->text().toStdString(), ui->outputEdit->text().toStdString(), ui->outputIdEdit->text().toStdString(), MnAlias.toStdString());
 		break;
@@ -140,21 +136,18 @@ void ConfigureMasternodePage::updateAlias(std::string Alias, std::string IP, std
 			COutPoint outpoint = COutPoint(mnTxHash, nIndex);
 			confLockedCoins.push_back(outpoint);
 			pwalletMain->UnlockCoin(outpoint);
-
 			masternodeConfig.deleteAlias(count);
 			masternodeConfig.add(Alias, IP, PrivKey, TxHash, OutputIndex);
 			// write to masternode.conf
 			masternodeConfig.writeToMasternodeConf();
 		}
 	}	
-
 }
 
 void ConfigureMasternodePage::on_AutoFillPrivKey_clicked()
 {
     CKey secret;
     secret.MakeNewKey(false);
-
     ui->privKeyEdit->setText(QString::fromStdString(CBitcoinSecret(secret).ToString()));
 }
 
@@ -164,7 +157,6 @@ void ConfigureMasternodePage::on_AutoFillOutputs_clicked()
     // Find possible candidates
     std::vector<COutput> possibleCoins;
     pwalletMain->AvailableCoins(possibleCoins, true, NULL, false, ONLY_MN_COLLATERAL);
-
     int test = 0;
     for (COutput& out : possibleCoins) {
         std::string TXHash = out.tx->GetHash().ToString();
