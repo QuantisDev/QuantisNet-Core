@@ -163,9 +163,10 @@ public:
         genesis = CreateGenesisBlock(nGenesisTime, nNonce, 0x1e0ffff0, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        vSeeds.push_back(CDNSSeedData("qSeed1", "144.202.47.177"));
-        vSeeds.push_back(CDNSSeedData("qSeed2", "45.63.104.138"));
-        vSeeds.push_back(CDNSSeedData("qSeed3", "149.28.110.229"));
+        vSeeds.push_back(CDNSSeedData("qDNSSeed1", "quanseed.com"));//Custom Seeder in golang,hosted by quantis team
+        vSeeds.push_back(CDNSSeedData("qDNSSeed2", "dnsseed.quantisnetwork.org"));//Generic seeder based on sipa's btc seeder,hosted by quantis team
+        vSeeds.push_back(CDNSSeedData("qDNSSeed3", "quanseed.llama.band"));//Generic seeder based on sipa's btc seeder,secondary backup hosted by llama
+
         // QuantisNet addresses start with 'Q'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,58);
         // QuantisNet script addresses start with 'N'
@@ -202,12 +203,21 @@ public:
         checkpointData = {
           {
             {  0, uint256(genesis.GetHash()) },
+            {1000,uint256S("266342d1f78bd9b5f03f5bceffb3e2992eafccbbbb5c388e2f3d325a64c0b029")},
+            {5000,uint256S("6a7a9ebbd694ec1d6345dab840550473029a36063a680f0615a7c6c18e87014d")},
+            {10000,uint256S("47767fd491112139e49128cb22218460eb42dca23cb20b4066fc09707ecf60f9")},
+            {20000,uint256S("943a2e8a17ed027051c3042b1eb85c138789043d143bfd23763dde48f6331ee9")},
+            {40000,uint256S("963529732cd3e49cf8c1d07bed62d2fa25e404328e2f59b90897ffe2e267eb0d")},
+            {60000,uint256S("a656b492cce25ef82a614ada536cf8970f0befdf7d7ddd6ea840b3d0d887624a")},
+            {80000,uint256S("ab4667f711a93370e50e898c6b3c0b03f06df64a4c909e7231b6e542f6bf40ac")},
+            {89846,uint256S("c3398e055540c53c15d73a5bbefa060408087a476ffd81db3ba0e29badc3a44e")},
+            {89847,uint256S("e1674af5bbf67d17b24add450f11602eb4b7dba6460014c256a16e132e646fb2")}
           }
         };
 
         chainTxData = ChainTxData{
-            1558042760,     // * UNIX timestamp of last known number of transactions
-            1157185,         // * total number of transactions between genesis and that timestamp
+            1567273974,     // * UNIX timestamp of last known number of transactions
+            193316,         // * total number of transactions between genesis and that timestamp
                             //   (the tx=... number in the SetBestChain debug.log lines)
             500          // * estimated number of transactions per second after that timestamp
         };
