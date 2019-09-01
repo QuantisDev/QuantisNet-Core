@@ -157,7 +157,6 @@ public:
         nPruneAfterHeight = 100000;
 
 	// genesis params
-
 	    uint32_t nGenesisTime = 1559435552;
         uint32_t nNonce = 1121235;
         genesis = CreateGenesisBlock(nGenesisTime, nNonce, 0x1e0ffff0, 1, 0);
@@ -195,31 +194,32 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        // See https://github.com/QuantisDev/QuantisNet-Core/pull/1969
+        // See https://github.com/dashpay/dash/pull/1969
         strSporkAddress = "Qgfqm9eXVCDwPFuTRsJ7qm6qb21zW23cST";
 
         nStakeMinAge = 5 * 60; //Set as 5 mins during testing,make it 24 hours when mainnet
 //Add checkpoints constantly on each new update,to keep all nodes on proper chain later
         checkpointData = {
           {
-            {  0, uint256(genesis.GetHash()) },
-            {1000,uint256S("266342d1f78bd9b5f03f5bceffb3e2992eafccbbbb5c388e2f3d325a64c0b029")},
-            {5000,uint256S("6a7a9ebbd694ec1d6345dab840550473029a36063a680f0615a7c6c18e87014d")},
-            {10000,uint256S("47767fd491112139e49128cb22218460eb42dca23cb20b4066fc09707ecf60f9")},
-            {20000,uint256S("943a2e8a17ed027051c3042b1eb85c138789043d143bfd23763dde48f6331ee9")},
-            {40000,uint256S("963529732cd3e49cf8c1d07bed62d2fa25e404328e2f59b90897ffe2e267eb0d")},
-            {60000,uint256S("a656b492cce25ef82a614ada536cf8970f0befdf7d7ddd6ea840b3d0d887624a")},
-            {80000,uint256S("ab4667f711a93370e50e898c6b3c0b03f06df64a4c909e7231b6e542f6bf40ac")},
-            {89846,uint256S("c3398e055540c53c15d73a5bbefa060408087a476ffd81db3ba0e29badc3a44e")},
-            {89847,uint256S("e1674af5bbf67d17b24add450f11602eb4b7dba6460014c256a16e132e646fb2")}
+           {0,uint256S("0x0000001d161ffa384283efdba6d25be3477b60ae36c9c52d49d4edbf9a4cf35b")},
+           {10000,uint256S("0x47767fd491112139e49128cb22218460eb42dca23cb20b4066fc09707ecf60f9")},
+           {20000,uint256S("0x943a2e8a17ed027051c3042b1eb85c138789043d143bfd23763dde48f6331ee9")},
+           {30000,uint256S("0xbe67ca5c7ac95bd7427bec4dd99187d1e9215b9fa99330e4044fee482593ab41")},
+           {40000,uint256S("0x963529732cd3e49cf8c1d07bed62d2fa25e404328e2f59b90897ffe2e267eb0d")},
+           {50000,uint256S("0xc9ed8f4e4f12e6647f51a4500a2db94a9aef509109ccf040f9d0e14eb4656134")},
+           {60000,uint256S("0xa656b492cce25ef82a614ada536cf8970f0befdf7d7ddd6ea840b3d0d887624a")},
+           {70000,uint256S("0xe4306a9c01391a5bee1ca5525daf63fb31554e64b3e6937d3c3185c4a947f1d9")},
+           {80000,uint256S("0xab4667f711a93370e50e898c6b3c0b03f06df64a4c909e7231b6e542f6bf40ac")},
+           {90000,uint256S("0xc191905ac1f185a363b4f15ec6e55184a411d67a280b2953664e63bfefce8750")},
+           {91090,uint256S("0x07bd68aea6b4f17d30c368ff6d3268c42b9ba32c8a6f4926682d4f25cf6c38bd")}
           }
         };
 
         chainTxData = ChainTxData{
-            1567273974,     // * UNIX timestamp of last known number of transactions
-            193316,         // * total number of transactions between genesis and that timestamp
+        1567378314,// * UNIX timestamp of last checkpoint block
+        195853,    // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
-            500          // * estimated number of transactions per second after that timestamp
+        2000       // * estimated number of transactions per day after checkpoint
         };
     }
 };
