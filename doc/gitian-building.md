@@ -315,8 +315,8 @@ Clone the git repositories for QuantisNet Core and Gitian.
 
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
-git clone https://github.com/akshaynexus/QuantisNet-Core
-git clone https://github.com/akshaynexus/gitian.sigs.git
+git clone https://github.com/QuantisDev/QuantisNet-Core.git
+git clone https://github.com/QuantisDev/gitian.sigs.git
 ```
 
 Setting up the Gitian image
@@ -382,7 +382,7 @@ Output from `gbuild` will look something like
     remote: Total 57959 (delta 0), reused 0 (delta 0), pack-reused 57958
     Receiving objects: 100% (57959/57959), 53.76 MiB | 484.00 KiB/s, done.
     Resolving deltas: 100% (41590/41590), done.
-    From https://github.com/akshaynexus/QuantisNet-Core
+    From https://github.com/QuantisDev/QuantisNet-Core.git
     ... (new tags, new branch etc)
     --- Building for trusty amd64 ---
     Stopping target if it is up
@@ -408,11 +408,11 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/crowning-/quantisnet.git
-COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
-./bin/gbuild --commit quantisnet=${COMMIT} --url quantisnet=${URL} ../quantisnet/contrib/gitian-descriptors/gitian-linux.yml
-./bin/gbuild --commit quantisnet=${COMMIT} --url quantisnet=${URL} ../quantisnet/contrib/gitian-descriptors/gitian-win.yml
-./bin/gbuild --commit quantisnet=${COMMIT} --url quantisnet=${URL} ../quantisnet/contrib/gitian-descriptors/gitian-osx.yml
+URL=https://github.com/QuantisDev/QuantisNet-Core.git
+COMMIT=master
+./bin/gbuild --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${URL} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${URL} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --commit QuantisNet-Core=${COMMIT} --url QuantisNet-Core=${URL} ../QuantisNet-Core/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
 Building fully offline
@@ -438,7 +438,7 @@ cd /path/to/gitian-builder
 LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root apt-get update
 LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root \
   -e DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
-  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../quantisnet/contrib/gitian-descriptors/*|sort|uniq )
+  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../QuantisNet-Core/contrib/gitian-descriptors/*|sort|uniq )
 LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root apt-get -q -y purge grub
 LXC_ARCH=amd64 LXC_SUITE=trusty on-target -u root -e DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
 ```
@@ -478,6 +478,6 @@ Uploading signatures (not yet implemented)
 ---------------------
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
-[quantisnet/gitian.sigs](https://github.com/akshaynexus/gitian.sigs/) repository, or if that's not possible to create a pull
+[QuantisDev/gitian.sigs](https://github.com/QuantisDev/gitian.sigs/) repository, or if that's not possible to create a pull
 request.
 There will be an official announcement when this repository is online.
