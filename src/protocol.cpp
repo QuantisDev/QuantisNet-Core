@@ -115,7 +115,6 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::MERKLEBLOCK,
     NetMsgType::GETBLOCKS,
     NetMsgType::GETHEADERS,
-    NetMsgType::GETHEADERSCOMPAT,
     NetMsgType::TX,
     NetMsgType::HEADERS,
     NetMsgType::BLOCK,
