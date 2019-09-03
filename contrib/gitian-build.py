@@ -24,8 +24,8 @@ def setup():
     subprocess.check_call(['sudo', 'apt-get', 'install', '-qq'] + programs)
     if not os.path.isdir('gitian.sigs'):
         subprocess.check_call(['git', 'clone', 'https://github.com/QuantisDev/gitian.sigs.git'])
-    if not os.path.isdir('dash-detached-sigs'):
-        subprocess.check_call(['git', 'clone', 'https://github.com/dashpay/dash-detached-sigs.git'])
+    if not os.path.isdir('quan-detached-sigs'):
+        subprocess.check_call(['git', 'clone', 'https://github.com/QuantisDev/quan-detached-sigs.git'])
     if not os.path.isdir('gitian-builder'):
         subprocess.check_call(['git', 'clone', 'https://github.com/devrandom/gitian-builder.git'])
     if not os.path.isdir('QuantisNet-Core'):
