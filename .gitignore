@@ -1,6 +1,164 @@
+*.sublime-project
+*.sublime-workspace
+.vscode
+todo.txt
+reset-files.bash
+tags
+TAGS
 
-src/qt/res/.DS_Store
+*.tar.gz
 
-src/qt/.DS_Store
+*.exe
+*.so
+src/quantisnet
+src/quantisnetd
+src/quantisnet-cli
+src/quantisnet-tx
+src/test/test_quantisnet
+src/qt/test/test_quantisnet-qt
+src/bench/bench_quantisnet
+src/qt/quantisnet-qt
 
+# will remove this and other instances of dash later, when rebranding is complete
+src/dash-tx
+src/test/test_dash
+src/qt/test/test_dash-qt
+src/bench/bench_dash
+
+# autoreconf
+Makefile.new.am
+Makefile.in
+aclocal.m4
+autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
+config.log
+config.status
+configure
+libtool
+
+# remove when rebranded
+src/config/dash-config.h
+src/config/dash-config.h.in
+
+
+src/config/quantisnet-config.h
+src/config/quantisnet-config.h.in
+src/config/stamp-h1
+share/setup.nsi
+share/qt/Info.plist
+
+src/univalue/gen
+
+src/qt/*.moc
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
+
+src/qt/test/moc*.cpp
+libconftest.dylib*
+
+.deps
+.dirstamp
+.libs
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.pyc
+*.o
+*.o-*
+*.patch
+.quantisnet
+*.a
+*.pb.cc
+*.pb.h
+
+*.log
+*.trs
+*.dmg
+
+*.json.h
+*.raw.h
+
+#libtool object files
+*.lo
+*.la
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+dash-qt
+Dash-Qt.app
+
+quantisnet-qt
+QuantisNet-Qt.app
+
+# Unit-tests
+Makefile.test
+quantisnet-qt_test
+dash-qt_test
+src/test/buildenv.py
+
+# Resources cpp
+qrc_*.cpp
+
+# Builds
+build
+builds/
+
+# Mac specific
 .DS_Store
+
+#lcov
+*.gcno
+*.gcda
+/*.info
+test_quantisnet.coverage/
+test_dash.coverage/
+total.coverage/
+coverage_percent.txt
+
+#build tests
+linux-coverage-build
+linux-build
+win32-build
+qa/pull-tester/tests_config.py
+qa/cache/*
+test_results/
+
+!src/leveldb*/Makefile
+
+.cproject
+.project
+.autotools
+/doc/doxygen/
+
+libquantisnetconsensus.pc
+src/qt/quantisnet-qt.bash
+contrib/devtools/split-debug.sh
+contrib/devtools/mini-debug.sh
+qa/pull-tester/tests-config.sh
+
+#development symlinks
+dash-cli
+dashd
+dash-qt
+make
+
+# Development VM
+/.vagrant/
+
+# Testing
+*.egg-info
