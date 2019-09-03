@@ -213,6 +213,9 @@ public:
            {90000,uint256S("0xc191905ac1f185a363b4f15ec6e55184a411d67a280b2953664e63bfefce8750")},
            {91090,uint256S("0x07bd68aea6b4f17d30c368ff6d3268c42b9ba32c8a6f4926682d4f25cf6c38bd")}
           }
+          //Blacklist
+          ,
+          {}
         };
 
         chainTxData = ChainTxData{

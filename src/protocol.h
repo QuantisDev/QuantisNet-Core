@@ -119,13 +119,6 @@ extern const char *GETBLOCKS;
  */
 extern const char *GETHEADERS;
 /**
- * The getheaders message requests a headers message that provides block
- * headers starting from a particular point in the block chain.This has been modified to be compatable for spv wallets
- * @since protocol version 31800.
- * @see https://bitcoin.org/en/developer-reference#getheaders
- */
-extern const char *GETHEADERSCOMPAT;
-/**
  * The tx message transmits a single transaction.
  * @see https://bitcoin.org/en/developer-reference#tx
  */

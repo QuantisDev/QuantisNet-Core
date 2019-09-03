@@ -22,7 +22,6 @@ const char *GETDATA="getdata";
 const char *MERKLEBLOCK="merkleblock";
 const char *GETBLOCKS="getblocks";
 const char *GETHEADERS="getheaders";
-const char *GETHEADERSCOMPAT="getheadersc";
 const char *TX="tx";
 const char *HEADERS="headers";
 const char *BLOCK="block";
