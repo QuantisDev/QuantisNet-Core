@@ -3228,6 +3228,8 @@ int CheckForUpdates (std::string addr, std::string ver)
         return false;
     }
   }
+      // Return false if updatecheck is not enabled,fixes segfault on new clients
+      return false;
 }
 
 void replaceAll(std::string& str, const std::string& from, const std::string& to)
