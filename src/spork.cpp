@@ -31,7 +31,8 @@ std::map<int, int64_t> mapSporkDefaults = {
     {SPORK_14_REQUIRE_SENTINEL_FLAG,         1545415606ULL}, // ON
     {SPORK_15_FIRST_POS_BLOCK,               315ULL},     // ON @mainnet
     {SPORK_16_MASTERNODE_MIN_PROTOCOL,       MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT }, // Actual
-    {SPORK_17_NEWPROTO_ENFORCE,                   1563195813ULL}, // July 15th
+    {SPORK_17_NEWPROTO_ENFORCE,              1563195813ULL}, // July 15th
+    {SPORK_18_DISABLE_IPV6_MNS,              1568840818ULL}, // September 18th,not final yet
 };
 SporkCheckpointMap mapSporkCheckpoints GUARDED_BY(cs_main);
 SporkBlacklistMap mapSporkBlacklist GUARDED_BY(cs_main);
@@ -402,7 +403,8 @@ int CSporkManager::GetSporkIDByName(const std::string& strName)
     if (strName == "SPORK_14_REQUIRE_SENTINEL_FLAG")            return SPORK_14_REQUIRE_SENTINEL_FLAG;
     if (strName == "SPORK_15_FIRST_POS_BLOCK")                  return SPORK_15_FIRST_POS_BLOCK;
     if (strName == "SPORK_16_MASTERNODE_MIN_PROTOCOL")          return SPORK_16_MASTERNODE_MIN_PROTOCOL;
-    if (strName == "SPORK_17_NEWPROTO_ENFORCE")          return SPORK_17_NEWPROTO_ENFORCE;
+    if (strName == "SPORK_17_NEWPROTO_ENFORCE")                 return SPORK_17_NEWPROTO_ENFORCE;
+    if (strName == "SPORK_18_DISABLE_IPV6_MNS")                 return SPORK_18_DISABLE_IPV6_MNS;
 
     LogPrint("spork", "CSporkManager::GetSporkIDByName -- Unknown Spork name '%s'\n", strName);
     return -1;
@@ -422,7 +424,8 @@ std::string CSporkManager::GetSporkNameByID(int nSporkID)
         case SPORK_14_REQUIRE_SENTINEL_FLAG:            return "SPORK_14_REQUIRE_SENTINEL_FLAG";
         case SPORK_15_FIRST_POS_BLOCK:                  return "SPORK_15_FIRST_POS_BLOCK";
         case SPORK_16_MASTERNODE_MIN_PROTOCOL:          return "SPORK_16_MASTERNODE_MIN_PROTOCOL";
-        case SPORK_17_NEWPROTO_ENFORCE:          return "SPORK_17_NEWPROTO_ENFORCE";
+        case SPORK_17_NEWPROTO_ENFORCE:                 return "SPORK_17_NEWPROTO_ENFORCE";
+        case SPORK_18_DISABLE_IPV6_MNS:                 return "SPORK_18_DISABLE_IPV6_MNS";
         default:
             LogPrint("spork", "CSporkManager::GetSporkNameByID -- Unknown Spork ID %d\n", nSporkID);
             return "Unknown";

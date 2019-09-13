@@ -277,7 +277,15 @@ bool CMasternode::IsValidNetAddr(CService addrIn)
 {
     // TODO: regtest is fine with any addresses for now,
     // should probably be a bit smarter if one day we start to implement tests for this
-    return Params().NetworkIDString() == CBaseChainParams::REGTEST ||(addrIn.IsIPv4() || (addrIn.IsIPv6() && IsReachable(addrIn) && addrIn.IsRoutable()));
+    //If spork is enabled,do not allow IPV6 MNS to be started.
+    if(sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
+    {
+    return Params().NetworkIDString() == CBaseChainParams::REGTEST ||
+            (addr.IsIPv4() && IsReachable(addr) && addr.IsRoutable());
+    }
+    //Else fall through and allow ipv4 and ipv6 nodes until spork is active 
+    return Params().NetworkIDString() == CBaseChainParams::REGTEST ||
+    (addrIn.IsIPv4() || (addrIn.IsIPv6() && IsReachable(addrIn) && addrIn.IsRoutable()));
 }
 
 masternode_info_t CMasternode::GetInfo() const
