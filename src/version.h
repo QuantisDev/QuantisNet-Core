@@ -12,7 +12,7 @@
  */
 
 
-static const int PROTOCOL_VERSION = 70214;
+static const int PROTOCOL_VERSION = 70215;
 
 //! initial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSION = 209;
@@ -21,7 +21,7 @@ static const int INIT_PROTO_VERSION = 209;
 static const int GETHEADERS_VERSION = 70077;
 
 //! disconnect from peers older than this proto version before spork enforcement
-static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70212;
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 70214;
 
 //! disconnect from peers older than this proto version after spork is enabled
 static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = PROTOCOL_VERSION;
