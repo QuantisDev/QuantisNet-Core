@@ -281,7 +281,7 @@ bool CMasternode::IsValidNetAddr(CService addrIn)
     if(sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
     {
     return Params().NetworkIDString() == CBaseChainParams::REGTEST ||
-            (addr.IsIPv4() && IsReachable(addr) && addr.IsRoutable());
+            (addrIn.IsIPv4() && IsReachable(addrIn) && addrIn.IsRoutable());
     }
     //Else fall through and allow ipv4 and ipv6 nodes until spork is active 
     return Params().NetworkIDString() == CBaseChainParams::REGTEST ||
