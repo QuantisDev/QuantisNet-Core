@@ -485,9 +485,9 @@ unsigned int GetLegacySigOpCount(const CTransaction& tx)
     return nSigOps;
 }
 int GetMinProtoVersion() {
- if(sporkManager.IsSporkActive(SPORK_17_NEWPROTO_ENFORCE)) {
+ if(sporkManager.IsSporkActive(SPORK_17_NEWPROTO_ENFORCE)|| sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS)) {
     return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-}
+   }
 else{
          return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
