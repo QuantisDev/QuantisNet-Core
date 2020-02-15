@@ -341,7 +341,8 @@ public:
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
-        nStakeMinAge = 180;
+        nStakeMinAgeOld = 180;
+        nStakeMinAgeNew = nStakeMinAgeOld;
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
@@ -467,8 +468,8 @@ public:
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
-        nStakeMinAge = 180;
-
+        nStakeMinAgeOld = 180;
+        nStakeMinAgeNew = nStakeMinAgeOld;
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             ( 0, uint256S("0x440cbbe939adba25e9e41b976d3daf8fb46b5f6ac0967b0a9ed06a749e7cf1e2")),
@@ -588,8 +589,8 @@ public:
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
         strSporkAddress = "yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW";
 
-        nStakeMinAge = 0;
-
+        nStakeMinAgeOld = 0;
+        nStakeMinAgeNew = nStakeMinAgeOld;
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (      0, uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"))
@@ -708,7 +709,8 @@ public:
         // BIP44 test coin type is '1' (All coin's testnet default)
         nLegacyExtCoinType = 1;
 
-        nStakeMinAge = 0;
+        nStakeMinAgeOld = 0;
+        nStakeMinAgeNew = nStakeMinAgeOld;
    }
 
     void UpdateBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
