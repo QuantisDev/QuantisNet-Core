@@ -11,7 +11,7 @@
 #include "consensus/params.h"
 #include "primitives/block.h"
 #include "protocol.h"
-
+#include "spork.h"
 #include <vector>
 
 struct CDNSSeedData {
@@ -95,7 +95,12 @@ public:
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
     int FulfilledRequestExpireTime() const { return nFulfilledRequestExpireTime; }
     const std::string& SporkAddress() const { return strSporkAddress; }
-    int64_t MinStakeAge() const { return nStakeMinAge; }
+    int64_t MinStakeAge() const {
+        if(sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
+            return nStakeMinAgeNew;
+        //Fallthrough to old stakeminage if the ipv6 spork isnt enabled
+        return nStakeMinAgeOld;
+    }
 protected:
     CChainParams() {}
 
@@ -123,7 +128,8 @@ protected:
     int nPoolMaxTransactions;
     int nFulfilledRequestExpireTime;
     std::string strSporkAddress;
-    int64_t nStakeMinAge;
+    int64_t nStakeMinAgeOld;
+    int64_t nStakeMinAgeNew;
 };
 
 /**

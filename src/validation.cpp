@@ -485,7 +485,7 @@ unsigned int GetLegacySigOpCount(const CTransaction& tx)
     return nSigOps;
 }
 int GetMinProtoVersion() {
- if(sporkManager.IsSporkActive(SPORK_17_NEWPROTO_ENFORCE) || sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
+ if(sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
     return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 else
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
@@ -1339,25 +1339,25 @@ bool phase10 = nHeight >1226401 && nHeight<=1401601;
 bool phase11 = nHeight >1401601 && nHeight<=1576801;
 bool phase12 = nHeight >1576801;
     if(nHeight==1)
-     nSubsidybase = 282000000;
+        nSubsidybase = 282000000;
     else if(phase1||phase2)
-     nSubsidybase = 1;
+            nSubsidybase = 1;
     else if (phase3)
-     nSubsidybase = 1000;
+            nSubsidybase = 1000;
     else if (phase4||phase5)
-     nSubsidybase = 500; 
+            nSubsidybase = 500; 
     else if (phase6||phase7)
-     nSubsidybase = 750;
+            nSubsidybase = 750;
     else if (phase8||phase9)
-     nSubsidybase = 1000;
+            nSubsidybase = 1000;
     else if (phase10||phase11)
-     nSubsidybase = 100;
+            nSubsidybase = 100;
     else if (phase12)
-     nSubsidybase = 1;
+            nSubsidybase = 1;
     else
-     nSubsidybase = 0;    
+        nSubsidybase = 0;    
 
-     return nSubsidybase * COIN; 
+    return nSubsidybase * COIN; 
 }
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockReward)

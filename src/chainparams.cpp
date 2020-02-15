@@ -120,20 +120,20 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1486252800; // Feb 5th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1556013600; // Apr 23th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1581727147; // Feb 15th, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1584232747; // March 15th, 2020
 
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1508025600; // Oct 15th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1556013600; // Apr 23th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1581727147; // Feb 15th, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1584232747; // March 15th, 2020
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
         // Deployment of BIP147
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].bit = 2;
-        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 1546300800; // Jan 1st, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1556013600; // Apr 23th, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nStartTime = 1581727147; // Feb 15th, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nTimeout = 1584232747; // March 15th, 2020
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_BIP147].nThreshold = 3226; // 80% of 4032
 
@@ -156,7 +156,7 @@ public:
         nDefaultPort = 9801;
         nPruneAfterHeight = 100000;
 
-	// genesis params
+	    // genesis params
 	    uint32_t nGenesisTime = 1559435552;
         uint32_t nNonce = 1121235;
         genesis = CreateGenesisBlock(nGenesisTime, nNonce, 0x1e0ffff0, 1, 0);
@@ -197,7 +197,8 @@ public:
         // See https://github.com/dashpay/dash/pull/1969
         strSporkAddress = "Qgfqm9eXVCDwPFuTRsJ7qm6qb21zW23cST";
 
-        nStakeMinAge = 5 * 60; //Set as 5 mins during testing,make it 24 hours when mainnet
+        nStakeMinAgeOld = 5 * 60;
+        nStakeMinAgeNew = 60 * 60;
 //Add checkpoints constantly on each new update,to keep all nodes on proper chain later
         checkpointData = {
           {
@@ -340,7 +341,8 @@ public:
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
-        nStakeMinAge = 180;
+        nStakeMinAgeOld = 180;
+        nStakeMinAgeNew = nStakeMinAgeOld;
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
@@ -466,8 +468,8 @@ public:
         // QuantisNet prefix: Base58 't' = 127 = 0x7F
         strSporkAddress = "tCLzFoAUkWyrDJmU3qvcKpSA41aD6AckwL";
 
-        nStakeMinAge = 180;
-
+        nStakeMinAgeOld = 180;
+        nStakeMinAgeNew = nStakeMinAgeOld;
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             ( 0, uint256S("0x440cbbe939adba25e9e41b976d3daf8fb46b5f6ac0967b0a9ed06a749e7cf1e2")),
@@ -587,8 +589,8 @@ public:
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
         strSporkAddress = "yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW";
 
-        nStakeMinAge = 0;
-
+        nStakeMinAgeOld = 0;
+        nStakeMinAgeNew = nStakeMinAgeOld;
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (      0, uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"))
@@ -707,7 +709,8 @@ public:
         // BIP44 test coin type is '1' (All coin's testnet default)
         nLegacyExtCoinType = 1;
 
-        nStakeMinAge = 0;
+        nStakeMinAgeOld = 0;
+        nStakeMinAgeNew = nStakeMinAgeOld;
    }
 
     void UpdateBIP9Parameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout)
