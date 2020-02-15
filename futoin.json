@@ -1,11 +1,11 @@
 {
     "name": "quantisnet",
-    "version": "2.1.2",
+    "version": "2.2.0",
     "vcs": "git",
     "tools": {
         "make": "*",
         "cmake": "*",
-        "python": "2.7"
+        "python": "3"
     },
     "actions": {
         "clean": "cte git clean -ffdx -e depends/ -e .vagrant/ . || true",
