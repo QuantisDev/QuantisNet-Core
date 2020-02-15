@@ -197,7 +197,8 @@ public:
         // See https://github.com/dashpay/dash/pull/1969
         strSporkAddress = "Qgfqm9eXVCDwPFuTRsJ7qm6qb21zW23cST";
 
-        nStakeMinAge = 5 * 60; //Set as 5 mins during testing,make it 24 hours when mainnet
+        nStakeMinAgeOld = 5 * 60;
+        nStakeMinAgeNew = 60 * 60;
 //Add checkpoints constantly on each new update,to keep all nodes on proper chain later
         checkpointData = {
           {
