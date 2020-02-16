@@ -276,7 +276,7 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlockIndex &blockFrom, cons
     //assign new variables to make it easier to read
     CAmount nValueIn = txPrev.vout[prevout.n].nValue;
     unsigned int nTimeBlockFrom = blockFrom.GetBlockTime();
-    auto min_age = Params().MinStakeAge();
+    auto min_age = sporkManager.GetSporkValue(SPORK_18_DISABLE_IPV6_MNS) >= nTimeBlockFrom ? Params().MinStakeAgeNew() : Params().MinStakeAgeOld();
     
     if (nValueIn < MIN_STAKE_AMOUNT) {
         return error("CheckStakeKernelHash() : stake value is too small %d < %d", nValueIn, MIN_STAKE_AMOUNT);

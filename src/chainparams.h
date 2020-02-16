@@ -95,11 +95,11 @@ public:
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
     int FulfilledRequestExpireTime() const { return nFulfilledRequestExpireTime; }
     const std::string& SporkAddress() const { return strSporkAddress; }
-    int64_t MinStakeAge() const {
-        if(sporkManager.IsSporkActive(SPORK_18_DISABLE_IPV6_MNS))
-            return nStakeMinAgeNew;
-        //Fallthrough to old stakeminage if the ipv6 spork isnt enabled
+    int64_t MinStakeAgeOld() const {
         return nStakeMinAgeOld;
+    }
+    int64_t MinStakeAgeNew() const {
+        return nStakeMinAgeNew;
     }
 protected:
     CChainParams() {}
