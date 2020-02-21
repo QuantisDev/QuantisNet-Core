@@ -39,9 +39,10 @@ static const int SPORK_16_MASTERNODE_MIN_PROTOCOL                       = 10015;
 static const int SPORK_17_NEWPROTO_ENFORCE                              = 10016;
 static const int SPORK_18_DISABLE_IPV6_MNS                              = 10017;
 static const int SPORK_19_BLACKLIST_ENABLED                             = 10018;
+static const int SPORK_20_STAKEMINAGEV2                                 = 10019;
 
 static const int SPORK_START                                            = SPORK_2_INSTANTSEND_ENABLED;
-static const int SPORK_END                                              = SPORK_19_BLACKLIST_ENABLED;
+static const int SPORK_END                                              = SPORK_20_STAKEMINAGEV2;
 
 extern std::map<int, int64_t> mapSporkDefaults;
 extern std::map<uint256, CSporkMessage> mapSporks;

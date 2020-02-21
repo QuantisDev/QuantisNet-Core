@@ -3155,7 +3155,7 @@ bool CWallet::SelectStakeCoins(StakeCandidates& setCoins, CAmount nTargetAmount)
     std::vector<COutput> vCoins;
     AvailableCoins(vCoins, true);
     auto curr_time = GetTime() + nStakeSetUpdateTime;
-    auto min_age =  curr_time >= sporkManager.GetSporkValue(SPORK_18_DISABLE_IPV6_MNS) ? Params().MinStakeAgeNew() : Params().MinStakeAgeOld();
+    auto min_age =  curr_time >= sporkManager.GetSporkValue(SPORK_20_STAKEMINAGEV2) ? Params().MinStakeAgeNew() : Params().MinStakeAgeOld();
 
     for (const COutput& out : vCoins) {
         CAmount out_value = out.tx->tx->vout[out.i].nValue;
@@ -3218,7 +3218,7 @@ bool CWallet::MintableCoins()
 
     std::vector<COutput> vCoins;
     AvailableCoins(vCoins, true);
-    auto min_age = GetAdjustedTime() >= sporkManager.GetSporkValue(SPORK_18_DISABLE_IPV6_MNS) ? Params().MinStakeAgeNew() : Params().MinStakeAgeOld();
+    auto min_age = GetAdjustedTime() >= sporkManager.GetSporkValue(SPORK_20_STAKEMINAGEV2) ? Params().MinStakeAgeNew() : Params().MinStakeAgeOld();
 
 
     BOOST_FOREACH (const COutput& out, vCoins) {
