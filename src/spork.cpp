@@ -32,7 +32,7 @@ std::map<int, int64_t> mapSporkDefaults = {
     {SPORK_15_FIRST_POS_BLOCK,               315ULL},     // ON @mainnet
     {SPORK_16_MASTERNODE_MIN_PROTOCOL,       MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT }, // Actual
     {SPORK_17_NEWPROTO_ENFORCE,              1563195813ULL}, // July 15th
-    {SPORK_18_DISABLE_IPV6_MNS,              1582203600ULL}, // Date and time (GMT): Thursday, February 20, 2020 1:00:00 PM
+    {SPORK_18_DISABLE_IPV6_MNS,              1582549200ULL},// Date and time (GMT): Monday, February 24, 2020 1:00:00 PM
 };
 SporkCheckpointMap mapSporkCheckpoints GUARDED_BY(cs_main);
 SporkBlacklistMap mapSporkBlacklist GUARDED_BY(cs_main);
