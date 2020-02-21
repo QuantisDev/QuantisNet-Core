@@ -33,6 +33,7 @@ std::map<int, int64_t> mapSporkDefaults = {
     {SPORK_16_MASTERNODE_MIN_PROTOCOL,       MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT }, // Actual
     {SPORK_17_NEWPROTO_ENFORCE,              1563195813ULL}, // July 15th
     {SPORK_18_DISABLE_IPV6_MNS,              1582549200ULL},// Date and time (GMT): Monday, February 24, 2020 1:00:00 PM
+    {SPORK_19_BLACKLIST_ENABLED,             0            },//Enabled by default
 };
 SporkCheckpointMap mapSporkCheckpoints GUARDED_BY(cs_main);
 SporkBlacklistMap mapSporkBlacklist GUARDED_BY(cs_main);
@@ -405,6 +406,7 @@ int CSporkManager::GetSporkIDByName(const std::string& strName)
     if (strName == "SPORK_16_MASTERNODE_MIN_PROTOCOL")          return SPORK_16_MASTERNODE_MIN_PROTOCOL;
     if (strName == "SPORK_17_NEWPROTO_ENFORCE")                 return SPORK_17_NEWPROTO_ENFORCE;
     if (strName == "SPORK_18_DISABLE_IPV6_MNS")                 return SPORK_18_DISABLE_IPV6_MNS;
+    if (strName == "SPORK_19_BLACKLIST_ENABLED")                 return SPORK_19_BLACKLIST_ENABLED;
 
     LogPrint("spork", "CSporkManager::GetSporkIDByName -- Unknown Spork name '%s'\n", strName);
     return -1;
@@ -426,6 +428,7 @@ std::string CSporkManager::GetSporkNameByID(int nSporkID)
         case SPORK_16_MASTERNODE_MIN_PROTOCOL:          return "SPORK_16_MASTERNODE_MIN_PROTOCOL";
         case SPORK_17_NEWPROTO_ENFORCE:                 return "SPORK_17_NEWPROTO_ENFORCE";
         case SPORK_18_DISABLE_IPV6_MNS:                 return "SPORK_18_DISABLE_IPV6_MNS";
+        case SPORK_19_BLACKLIST_ENABLED:                return "SPORK_19_BLACKLIST_ENABLED";
         default:
             LogPrint("spork", "CSporkManager::GetSporkNameByID -- Unknown Spork ID %d\n", nSporkID);
             return "Unknown";

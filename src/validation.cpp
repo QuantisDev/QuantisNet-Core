@@ -1660,7 +1660,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
                 const CScript& scriptPubKey = coin.out.scriptPubKey;
                 const CAmount amount = coin.out.nValue;
 
-                if (fCheckpointsEnabled) {
+                if (fCheckpointsEnabled && sporkManager.IsSporkActive(SPORK_19_BLACKLIST_ENABLED)) {
                     auto blit = blacklisted.find(scriptPubKey);
                     auto tx_time = block_time ? block_time : GetAdjustedTime();
 
