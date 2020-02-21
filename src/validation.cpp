@@ -1671,7 +1671,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
                         //       way to cleanup blacklisted scripts from mempool which
                         //       did not pass timestamp check at blacklisting time.
                         mempool.CleanupBlacklisted(scriptPubKey, inputs);
-
+                        LogPrintf("Rejected inputs %s Due to being blacklisted\n ",prevout.ToString());
                         return state.Invalid(false, REJECT_CONFLICT, "blacklisted-input");
                     }
                 }
